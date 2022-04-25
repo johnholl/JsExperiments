@@ -1,0 +1,13 @@
+Overall strategy for now will to be create single pages which each focus on an individual algorithm.
+
+Some algorithms:
+X maze solver
+X tree visualization
+* breadth first search on a tree
+* inverting a binary tree
+* doing stuff with linked lists like swapping, reversing, sorting
+* sorting array (insertion, selection, merge, etc)
+* tabular RL algorithms
+* simple adaptive strategies
+* simple ic simulation
+* linear regression

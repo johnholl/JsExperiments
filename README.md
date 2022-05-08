@@ -24,7 +24,7 @@ JsExperiments is a web app featuring a fully in-browser JavaScript editor with v
 </ul>
 </div>
 <div style="width:50%">
-<img src="public/maze_static.png" alt="Avatar" style="width:200px"/>
+<img src="public/maze_static.png" alt="Avatar" style="width:200px; height:180px"/>
 </div>
 </div>
 
@@ -37,7 +37,7 @@ JsExperiments is a web app featuring a fully in-browser JavaScript editor with v
 </ul>
 </div>
 <div style="width:50%">
-<img src="public/graph_static.png" alt="Avatar" style="width:200px"/>
+<img src="public/graph_static.png" alt="Avatar" style="width:200px; height:180px"/>
 </div>
 </div>
 
@@ -50,7 +50,7 @@ JsExperiments is a web app featuring a fully in-browser JavaScript editor with v
 </ul>
 </div>
 <div style="width:50%">
-<img src="public/static_sorting.png" alt="Avatar" style="width:200px"/>
+<img src="public/static_sorting.png" alt="Avatar" style="width:200px; height:180px"/>
 </div>
 </div>
 
@@ -63,7 +63,7 @@ JsExperiments is a web app featuring a fully in-browser JavaScript editor with v
 </ul>
 </div>
 <div style="width:50%">
-<img src="public/rod.png" alt="Avatar" style="width:200px"/>
+<img src="public/rod.png" alt="Avatar" style="width:200px; height:180px"/>
 </div>
 </div>
 
@@ -76,7 +76,7 @@ JsExperiments is a web app featuring a fully in-browser JavaScript editor with v
 </ul>
 </div>
 <div style="width:50%">
-<img src="public/colorpuzzle_static.png" alt="Avatar" style="width:200px"/>
+<img src="public/colorpuzzle_static.png" alt="Avatar" style="width:200px; height:180px"/>
 </div>
 </div>
 

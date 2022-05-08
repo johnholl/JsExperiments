@@ -8,26 +8,78 @@ JsExperiments is a web app featuring a fully in-browser JavaScript editor with v
 ## Table of Contents
 - [Experiments](#experiments)
   - [Maze Navigation](#maze-navigation)
-
-
-PUBLIC_URL | :x: | :white_check_mark: | Create React App assumes your application is hosted at the serving web server's root or a subpath as specified in [`package.json` (`homepage`)](#building-for-relative-paths)
+  - [Graph Visualization](#graph-visualization)
+  - [List Sorting](#list-sorting)
+  - [Rod Heating](#rod-heating)
+  - [Color Puzzle](#color-puzzle)
 
 ## Experiments
 
 ### Maze Navigation
+<div style="display:flex; flex-direction:row">
+<div style="width:50%">
+<ul>
+<li> simply connected mazes </li>
+<li> demo using right-hand rule </li>
+</ul>
+</div>
+<div style="width:50%">
+<img src="public/maze_static.png" alt="Avatar" style="width:200px"/>
+</div>
+</div>
 
+### Graph Visualization
+<div style="display:flex; flex-direction:row">
+<div style="width:50%">
+<ul>
+<li> random trees </li>
+<li> demo using force-directed algorithm </li>
+</ul>
+</div>
+<div style="width:50%">
+<img src="public/graph_static.png" alt="Avatar" style="width:200px"/>
+</div>
+</div>
 
+### List Sorting
+<div style="display:flex; flex-direction:row">
+<div style="width:50%">
+<ul>
+<li> Sort 20 item list</li>
+<li> demo using selection sort</li>
+</ul>
+</div>
+<div style="width:50%">
+<img src="public/static_sorting.png" alt="Avatar" style="width:200px"/>
+</div>
+</div>
 
-* [facebook/jest#1767](https://github.com/facebook/jest/issues/1767)
-* [facebook/watchman#358](https://github.com/facebook/watchman/issues/358)
-* [ember-cli/ember-cli#6259](https://github.com/ember-cli/ember-cli/issues/6259)
+### Rod Heating
+<div style="display:flex; flex-direction:row">
+<div style="width:50%">
+<ul>
+<li> numerically solve heat equation</li>
+<li> demo using Gauss-Seidel algorithm</li>
+</ul>
+</div>
+<div style="width:50%">
+<img src="public/rod.png" alt="Avatar" style="width:200px"/>
+</div>
+</div>
 
+### Color Puzzle
+<div style="display:flex; flex-direction:row">
+<div style="width:50%">
+<ul>
+<li> match edge colors</li>
+<li> demo using simulated annealing </li>
+</ul>
+</div>
+<div style="width:50%">
+<img src="public/colorpuzzle_static.png" alt="Avatar" style="width:200px"/>
+</div>
+</div>
 
-```
-watchman shutdown-server
-brew update
-brew reinstall watchman
-```
 
 
 

@@ -1,0 +1,4 @@
+* in list sorting, user can directly modify arr, and it doesn't appear til reset
+    * api should not refer to arr, and instead do a call like val()
+    * OR can we modify the actual arr calls?
+

@@ -13,7 +13,7 @@ export default function Controls(props) {
       const stopCode = () => {
         window.shouldStopCode = true;
         setBuffering(true);
-        setTimeout(() => {window.shouldStopCode = false; setRunning(false); setBuffering(false);}, 1100);
+        setTimeout(() => {window.shouldStopCode = false; setRunning(false); setBuffering(false);}, 1300);
       };
 
     const startDemo = () => {

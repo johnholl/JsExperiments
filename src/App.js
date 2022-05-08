@@ -8,6 +8,7 @@ import MainPage from './components/MainPage'
 import GraphExperiment from './components/graph/GraphExperiment';
 import ColorPuzzleExperiment from './components/colorpuzzle/ColorPuzzleExperiment';
 import RodExperiment from './components/rodheating/RodExperiment';
+import ThreePage from './components/ThreePage';
 
 export default function App() {
 
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="graph" element={<GraphExperiment/>}/>
         <Route path="colorpuzzle" element={<ColorPuzzleExperiment/>}/>
         <Route path="heatrod" element={<RodExperiment/>}/>
+        <Route path="three" element={<ThreePage/>}/>
       </Routes>
     </BrowserRouter>
     );

@@ -65,6 +65,9 @@ export default function MainPage() {
                         </div>
                     </Link>
                     </li>
+                    <li>
+                        <Link to="/three">three</Link>
+                    </li>
                 </ul>
 
             </div>

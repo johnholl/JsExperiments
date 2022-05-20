@@ -27,7 +27,6 @@ export default function GraphExperiment(props) {
     }, [])
 
     const initializeGraph = () => {
-      console.log("init");
       var {nds, edgeList, locations} = newGraph(20);
       setGraph(edgeList);
       setNodes(nds);
@@ -42,7 +41,7 @@ export default function GraphExperiment(props) {
       <div style={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', paddingTop:50}}>
       <div style={{width: 1200, minHeight:"100vh", borderStyle:"solid", borderColor:"black", borderRadius:"10px", padding:"10px", backgroundColor:"#F8F7D5", fontSize:"1.5rem", fontFamily:"Andale Mono, monospace"}}>
         <h1>graph visualization</h1>
-        <p>Graphs are powerful modelling tools that can be used to describe all kinds of phenomena including information networks, food webs, weather patterns, and roads. Graph visualization in two dimensions is a useful tool for cursory analysis of a graph's structure. In this experiment you will have the ability to move the nodes of a graph around, with the goal of separating the graph and making easy to understand. Check out the <text className="demo-button" style={{padding:"5px 10px"}}>demo</text>, which uses a <b>force-directed</b> algorithm.</p>
+        <p>Graphs are powerful modelling tools that can be used to describe all kinds of phenomena including information networks, food webs, weather patterns, and roads. Graph visualization in two dimensions is a useful tool for cursory analysis of a graph's structure. In this experiment you will have the ability to move the nodes of a graph around, with the goal of separating the graph and making easy to understand. Check out the <span className="demo-button" style={{padding:"5px 10px"}}>demo</span>, which uses a <b>force-directed</b> algorithm.</p>
         <h3>Graph API</h3>
         <ul>
           <li><b>edgeList</b> Any array of length two arrays consisting of the edges of the graph</li>

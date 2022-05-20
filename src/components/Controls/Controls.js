@@ -32,7 +32,7 @@ export default function Controls(props) {
             <button className="new-button" disabled={running} onClick={resetGraph}>new experiment</button>
             <button className="kill-button" disabled={!running || buffering} onClick={stopCode}>reset</button>
             <div style={{width:200}}>
-                <text style={{color:"white", fontWeight:700, fontSize:"14px"}}>actions per second</text>
+                <span style={{color:"white", fontWeight:700, fontSize:"14px"}}>actions per second</span>
                 <Slider
                 disabled={running}
                 min={1}

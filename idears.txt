@@ -11,3 +11,20 @@ X tree visualization
 * simple adaptive strategies
 * simple ic simulation
 * linear regression
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+What would it take to allow others to make these?
+Option 1 -- directly contributing to repo
+    - typescript
+    - a little bit of reorganizing files so things are in logical spots
+    - documentation/walkthrough
+
+Option 2 -- tools on the webapp itself for building experiences
+    - how to specify graphics?
+    - how to translate user specs into refs

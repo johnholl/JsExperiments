@@ -13,7 +13,8 @@ export function processCode(code) {
 
 export function processGraphCode(code) {
     let internalCode = code.replaceAll("setLocations", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} await setLocations")
-    .replaceAll("locations", "locations.current");
+    .replaceAll("locations", "locations.current")
+    .replaceAll(/console\.log\(([^)]+)\)/g, "x=x + $1 + \"\\n\"; setConsoleMessage\(x\);");
     internalCode = "try{" + internalCode + "} catch(error){setConsoleMessage((msg) =>msg + error.message)}";
     internalCode = "(async () =>{ var x = \"\";" + internalCode + "})().then(()=>{});";
     return internalCode;
@@ -21,7 +22,8 @@ export function processGraphCode(code) {
 
 export function processColorPuzzleCode(code) {
     let internalCode = code.replaceAll("setLocations", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} await setLocations")
-    .replaceAll("swap", "await sleepA(speed); swap");
+    .replaceAll("swap", "await sleepA(speed); swap")
+    .replaceAll(/console\.log\(([^)]+)\)/g, "x=x + $1 + \"\\n\"; setConsoleMessage\(x\);");
     internalCode = "try{" + internalCode + "} catch(error){setConsoleMessage((msg) =>msg + error.message)}";
     internalCode = "(async () =>{ var x = \"\";" + internalCode + "})().then(()=>{});";
     return internalCode;
@@ -31,9 +33,9 @@ export function processRodCode(code) {
     let internalCode = code.replaceAll(/rod\[([0-9])+\]\s*\=/g, "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} ; draw(); await sleepA(speed); rod[$1]=")
     .replaceAll("rod", "rRef.current")
     .replaceAll("rod = ", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} ; draw(); await sleepA(speed) ; rod = ")
+    .replaceAll(/console\.log\(([^)]+)\)/g, "x=x + $1 + \"\\n\"; setConsoleMessage\(x\);");
     internalCode = "try{" + internalCode + "draw();} catch(error){setConsoleMessage((msg) =>msg + error.message)}";
     internalCode = "(async () =>{ var x = \"\";" + internalCode + "})().then(()=>{});";
-    console.log(internalCode);
     return internalCode;
 }
 

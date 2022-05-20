@@ -6,8 +6,6 @@ export const newRod = (n, mn, mx) => {
         r.push(Math.floor(Math.random()*(mx-mn) + mn));
     }
     const er = eqRod(r, 10000);
-    console.log(r);
-    console.log(er);
     return {r, er};
 }
 

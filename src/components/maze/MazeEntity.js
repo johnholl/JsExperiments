@@ -41,7 +41,6 @@ export default class MazeEntity {
             return this;
         }
         catch(err){
-            console.log(err);
         }
     }
 

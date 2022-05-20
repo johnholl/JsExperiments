@@ -22,7 +22,6 @@ export default function MazeEngine(props) {
         const runCode = (demoCode) => {
             setConsoleMessage("");
             if(demoCode){
-                console.log(processCode(demoCode));
                 eval(processCode(demoCode))
             } else{
                 eval(processCode(code));
@@ -169,6 +168,6 @@ export default function MazeEngine(props) {
         }
 
     return(
-            <canvas {...props} ref={canvasRef} style={{width:cs*(w-1), height:cs*(h-1)}}/>
+            <canvas ref={canvasRef} style={{width:cs*(w-1), height:cs*(h-1)}}/>
     )
 }

@@ -26,8 +26,6 @@ export default function ListExperiment(props) {
 
     const initializeList = () => {
       var {list, sortedList} = newList(20);
-      console.log(list);
-      console.log(sortedList);
       setList(list);
       setSortedList(sortedList);
   }
@@ -37,13 +35,13 @@ export default function ListExperiment(props) {
       <div style={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', paddingTop:50}}>
       <div style={{width: 1200, minHeight:"100vh", borderStyle:"solid", borderColor:"black", borderRadius:"10px", padding:"10px", backgroundColor:"#F8F7D5", fontSize:"1.5rem", fontFamily:"Andale Mono, monospace"}}>
         <h1>list sorting</h1>
-        <p>Sorting is a fundamental building block of many algorithms. It is an easy problem to state: given an unsorted list of numbers, rearrange them to be in increasing order. Despite this simple formulation there are many ways of solving this problem, and choosing which one to use can be subtle. In this experiment you are given an array called <b>arr</b> containing 20 elements. Write an algorithm that sorts arr. This should be done <em>in place</em>, meaning your code should modify values in arr rather than create a new array with sorted values. Consider reading about and attempting the following algorithms: selection sort, insertion sort, merge sort, and quick sort. Check out the <text className="demo-button" style={{padding:"5px 10px"}}>demo</text> which uses <b>selection sort</b>.</p>
+        <p>Sorting is a fundamental building block of many algorithms. It is an easy problem to state: given an unsorted list of numbers, rearrange them to be in increasing order. Despite this simple formulation there are many ways of solving this problem, and choosing which one to use can be subtle. In this experiment you are given an array called <b>arr</b> containing 20 elements. Write an algorithm that sorts arr. This should be done <em>in place</em>, meaning your code should modify values in arr rather than create a new array with sorted values. Consider reading about and attempting the following algorithms: selection sort, insertion sort, merge sort, and quick sort. Check out the <span className="demo-button" style={{padding:"5px 10px"}}>demo</span> which uses <b>selection sort</b>.</p>
         <h3>Sorting API</h3>
         <ul>
           <li><b>arr</b> The array to sort. It consists of 20 elements with values between 0 and 100.</li>
           <li><b>swap(i, j)</b> This will swap the ith and jth elements in arr. Note that you call this function directly e.g. <em>swap(1,3)</em>. You <em style={{color:"red"}}>should not call it on arr ie <b>arr.swap(1,3).</b></em></li>
         </ul>
-        <p>When swap is called, the two swapping values will turn dark gray. As values are placed in their correct order, they will form the colors of the <text className="rainbow-text">rainbow</text>.</p>
+        <p>When swap is called, the two swapping values will turn dark gray. As values are placed in their correct order, they will form the colors of the <span className="rainbow-text">rainbow</span>.</p>
     <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
       <div className="flex-grid" style={{width:1200}}>
         <div style={{borderColor:"black", borderStyle:"solid"}}>

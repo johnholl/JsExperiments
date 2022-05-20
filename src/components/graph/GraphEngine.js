@@ -23,7 +23,6 @@ export default function GraphEngine(props) {
 
         const runCode = (demoCode) => {
             setConsoleMessage("");
-            console.log(demoCode);
             if(demoCode){
                 eval(processGraphCode(demoCode));
             }
@@ -120,6 +119,6 @@ export default function GraphEngine(props) {
         return(<div/>)
     }
     return(
-            <canvas {...props} ref={canvasRef} style={{width:500, height:500}}/>
+            <canvas ref={canvasRef} style={{width:500, height:500}}/>
     )
 }

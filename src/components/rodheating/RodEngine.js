@@ -31,8 +31,6 @@ export default function RodEngine(props) {
 
           useEffect(() => {
               if(!running){
-                  console.log("hey-oh");
-                  console.log(props.rod);
                   rRef.current = [...props.rod];
                   draw();
               } else if(running == "demo"){

@@ -34,7 +34,8 @@ export default function ColorPuzzleEngine(props) {
                 draw();
           }, [props.env])
 
-          useEffect(async () => {
+          useEffect(() => {
+              async function switchRun() {
               if(!running){
                 env.current = props.env.map(function(arr) { return arr.slice();});;
                 draw();
@@ -43,6 +44,8 @@ export default function ColorPuzzleEngine(props) {
               } else {
                   runCode();
               }
+            };
+            switchRun();
           }, [running])
 
         const simulatedAnnealing = async () => {
@@ -157,6 +160,6 @@ export default function ColorPuzzleEngine(props) {
         }
 
     return(
-            <canvas {...props} ref={canvasRef} style={{width:cs*(w-1), height:cs*(h-1)}}/>
+            <canvas ref={canvasRef} style={{width:cs*(w-1), height:cs*(h-1)}}/>
     )
 }

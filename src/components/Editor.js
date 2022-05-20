@@ -1,6 +1,8 @@
 import AceEditor from "react-ace";
 import React from 'react';
 
+import 'ace-builds/webpack-resolver';
+
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-dracula";
 

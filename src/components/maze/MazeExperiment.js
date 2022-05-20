@@ -39,7 +39,7 @@ export default function MazeExperiment(props) {
       <div style={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', paddingTop:50}}>
         <div style={{width: 1200, minHeight:"100vh", borderStyle:"solid", borderColor:"black", borderRadius:"10px", padding:"10px", backgroundColor:"#F8F7D5", fontSize:"1.5rem", fontFamily:"Andale Mono, monospace"}}>
           <h1>maze navigation</h1>
-          <p>The term <i>maze</i> dates to the 13th century, and the concept is thousands of years old. There are a variety of techniques for navigating mazes. Try to write your own in the experiment below. Check out the <text className="demo-button" style={{padding:"5px 10px"}}>demo</text>, which uses the <b>Right-hand rule</b>.</p>
+          <p>The term <i>maze</i> dates to the 13th century, and the concept is thousands of years old. There are a variety of techniques for navigating mazes. Try to write your own in the experiment below. Check out the <span className="demo-button" style={{padding:"5px 10px"}}>demo</span>, which uses the <b>Right-hand rule</b>.</p>
           <h3>Agent API</h3>
           <ul>
             <li><b>move()</b> will move the <b style={{backgroundColor:"black", color:"yellow", fontWeight:700}}>agent</b> forward one space if it is not blocked by a wall.</li>

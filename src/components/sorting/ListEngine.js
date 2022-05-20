@@ -147,6 +147,6 @@ export default function ListEngine(props) {
         }
 
     return(
-            <canvas {...props} ref={canvasRef} style={{width:cs*cells, height:470}}/>
+            <canvas ref={canvasRef} style={{width:cs*cells, height:470}}/>
     )
 }

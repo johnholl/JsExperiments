@@ -2,6 +2,7 @@
 
 #notes
 /*.txt
+/*.md
 
 # dependencies
 /node_modules

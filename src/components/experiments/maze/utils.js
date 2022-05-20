@@ -1,4 +1,3 @@
-
 export function processCode(code) {
     let internalCode = code.replaceAll("move()", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} await move();")
     .replaceAll("turnLeft()", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} await turnLeft()")
@@ -7,34 +6,6 @@ export function processCode(code) {
     .replaceAll("arr", "lref.current")
     .replaceAll(/console\.log\(([^)]+)\)/g, "x=x + $1 + \"\\n\"; setConsoleMessage\(x\);")
     internalCode = "try{" + internalCode + "} catch(error){setConsoleMessage((msg) =>msg + error.message)}";
-    internalCode = "(async () =>{ var x = \"\";" + internalCode + "})().then(()=>{});";
-    return internalCode;
-}
-
-export function processGraphCode(code) {
-    let internalCode = code.replaceAll("setLocations", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} await setLocations")
-    .replaceAll("locations", "locations.current")
-    .replaceAll(/console\.log\(([^)]+)\)/g, "x=x + $1 + \"\\n\"; setConsoleMessage\(x\);");
-    internalCode = "try{" + internalCode + "} catch(error){setConsoleMessage((msg) =>msg + error.message)}";
-    internalCode = "(async () =>{ var x = \"\";" + internalCode + "})().then(()=>{});";
-    return internalCode;
-}
-
-export function processColorPuzzleCode(code) {
-    let internalCode = code.replaceAll("setLocations", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} await setLocations")
-    .replaceAll("swap", "await sleepA(speed); swap")
-    .replaceAll(/console\.log\(([^)]+)\)/g, "x=x + $1 + \"\\n\"; setConsoleMessage\(x\);");
-    internalCode = "try{" + internalCode + "} catch(error){setConsoleMessage((msg) =>msg + error.message)}";
-    internalCode = "(async () =>{ var x = \"\";" + internalCode + "})().then(()=>{});";
-    return internalCode;
-}
-
-export function processRodCode(code) {
-    let internalCode = code.replaceAll(/rod\[([0-9])+\]\s*\=/g, "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} ; draw(); await sleepA(speed); rod[$1]=")
-    .replaceAll("rod", "rRef.current")
-    .replaceAll("rod = ", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} ; draw(); await sleepA(speed) ; rod = ")
-    .replaceAll(/console\.log\(([^)]+)\)/g, "x=x + $1 + \"\\n\"; setConsoleMessage\(x\);");
-    internalCode = "try{" + internalCode + "draw();} catch(error){setConsoleMessage((msg) =>msg + error.message)}";
     internalCode = "(async () =>{ var x = \"\";" + internalCode + "})().then(()=>{});";
     return internalCode;
 }
@@ -115,7 +86,6 @@ export function newMaze(x, y) {
     return {ans, start, end};
 }
 
-
 export const startingMaze = [
     [true,  true,  true,  true,  true,  true,  true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
     [true,  false, false, true,  true,  false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
@@ -138,54 +108,3 @@ export const startingMaze = [
     [true,  true,  true,  true,  true,  true,  true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
     [true,  true,  true,  true,  true,  true,  true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
     [true,  true,  true,  true,  true,  true,  true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],]
-
-
-export function newList(n) {
-    var sortedList = Array();
-    for(var i=0; i<n; i++){
-        sortedList.push(Math.floor(Math.random()*100) + 1)
-    }
-
-    var list = [...sortedList];
-    sortedList.sort(function(a, b) { return a > b ? 1 : -1});
-    return {list, sortedList};
-}
-
-
-
-export function newGraph(n) {
-
-    // first, generate a Pruefer sequence
-    var pSeq = [];
-    for(var i=1; i<n-1; i++){
-        pSeq.push(Math.floor(Math.random()*n))
-    }
-  
-    var edgeList = [];
-    var deg = Array(n).fill(1);
-  
-    pSeq.map(val => deg[val]++);
-  
-    for(var i=0; i<pSeq.length; i++){
-        for(var j=0; j<n; j++){
-            if(deg[j]===1){
-                deg[j]--;
-                deg[pSeq[i]]--;
-                edgeList.push([pSeq[i],j]);
-                break
-            }
-        }
-    }
-    var deg1 = [];
-    deg.map((d, i) => {if(d===1){deg1.push(i)} return 0});
-    edgeList.push([deg1[0],deg1[1]]);
-    var nds = Array.from(Array(n).keys())
-
-    var locations = [];
-    for(var i=0; i<n; i++){
-        locations.push([Math.random()*5-2.5, Math.random()*5-2.5])
-    }
-
-    return {nds, edgeList, locations};
-  }
-  

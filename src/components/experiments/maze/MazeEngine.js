@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react';
 import { Slider } from 'antd';
-import { processCode } from '../../utils';
+import { processCode } from './utils';
 
 export default function MazeEngine(props) {
 

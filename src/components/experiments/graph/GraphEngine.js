@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
-import { processGraphCode } from '../../utils';
-import {forceCoulomb, forceHooke, distance} from '../../graphUtils';
+import { processCode } from './utils';
+import {forceCoulomb, forceHooke, distance} from './utils';
 
 async function sleepA(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -24,10 +24,10 @@ export default function GraphEngine(props) {
         const runCode = (demoCode) => {
             setConsoleMessage("");
             if(demoCode){
-                eval(processGraphCode(demoCode));
+                eval(processCode(demoCode));
             }
             else {
-                eval(processGraphCode(code));
+                eval(processCode(code));
             }
         }
 

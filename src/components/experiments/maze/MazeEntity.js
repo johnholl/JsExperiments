@@ -1,6 +1,4 @@
 
-
-
 export default class MazeEntity {
 
     constructor(x, y, type, facing, env){

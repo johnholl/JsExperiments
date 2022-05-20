@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import { processCode } from '../../utils';
+import { processCode } from './utils';
 
 async function sleepA(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

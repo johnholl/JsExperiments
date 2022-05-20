@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Editor from '../Editor';
 import ListEngine from './ListEngine';
-import Console from '../Console';
-import { newList } from '../../utils';
-import Controls from '../Controls';
+import { newList } from './utils';
+import Editor from '../../editor/Editor';
+import Console from '../../editor/Console';
+import Controls from '../../controls/Controls';
 
 window.shouldStopCode = false;
 

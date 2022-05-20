@@ -15,9 +15,6 @@ export default function MainPage() {
                     <PageListing title="graph visual" location="/graph" img="graph_static.png" anim="graph.gif"/>
                     <PageListing title="match tiles" location="/colorpuzzle" img="colorpuzzle_static.png" anim="colorpuzzle.gif"/>
                     <PageListing title="heat simulation" location="/heatrod" img="rod.png" anim="rod.gif"/>
-                    <li>
-                        <Link to="/three">three</Link>
-                    </li>
                 </ul>
 
             </div>

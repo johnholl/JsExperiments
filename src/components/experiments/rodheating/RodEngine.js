@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import { processCode, processRodCode } from '../../utils';
+import { processCode } from './utils';
 
 async function sleepA(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -23,9 +23,9 @@ export default function RodEngine(props) {
         const runCode = (demoCode) => {
             setConsoleMessage("");
             if(demoCode){
-                eval(processRodCode(demoCode));
+                eval(processCode(demoCode));
             } else{
-                eval(processRodCode(code));
+                eval(processCode(code));
             }
         }
 

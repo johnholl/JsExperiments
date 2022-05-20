@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Editor from '../Editor';
 import MazeEngine from './MazeEngine';
-import Console from '../Console';
-import { newMaze, startingMaze } from '../../utils';
-import Controls from '../Controls';
+import { newMaze, startingMaze } from './utils';
+import Editor from '../../editor/Editor';
+import Console from '../../editor/Console';
+import Controls from '../../controls/Controls';
 
 window.shouldStopCode = false;
 

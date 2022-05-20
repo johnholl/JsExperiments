@@ -1,4 +1,12 @@
 
+export function processCode(code) {
+    let internalCode = code.replaceAll("setLocations", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} await setLocations")
+    .replaceAll("swap", "await sleepA(speed); swap")
+    .replaceAll(/console\.log\(([^)]+)\)/g, "x=x + $1 + \"\\n\"; setConsoleMessage\(x\);");
+    internalCode = "try{" + internalCode + "} catch(error){setConsoleMessage((msg) =>msg + error.message)}";
+    internalCode = "(async () =>{ var x = \"\";" + internalCode + "})().then(()=>{});";
+    return internalCode;
+}
 
 const colors = ['red', 'blue', 'green', 'gold'];
 

@@ -1,7 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import { Slider } from 'antd';
-import { processColorPuzzleCode } from '../../utils';
-import { getScore } from '../../colorPuzzleUtils';
+import { processCode, getScore } from './utils';
 
 async function sleepA(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
@@ -23,9 +22,9 @@ export default function ColorPuzzleEngine(props) {
         const runCode = (demoCode) => {
             setConsoleMessage("");
             if(demoCode){
-                eval(processColorPuzzleCode(demoCode))
+                eval(processCode(demoCode))
             } else{
-                eval(processColorPuzzleCode(code));
+                eval(processCode(code));
             }
         }
 

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Editor from '../Editor';
-import Console from '../Console';
-import Controls from '../Controls';
+import Editor from '../../editor/Editor';
+import Console from '../../editor/Console';
+import Controls from '../../controls/Controls';
 import RodEngine from './RodEngine';
-import { newRod } from '../../rodUtils';
+import { newRod } from './utils';
 
 window.shouldStopCode = false;
 

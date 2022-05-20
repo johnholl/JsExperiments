@@ -2,13 +2,13 @@ import React from 'react';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import './App.css';
 import 'antd/dist/antd.css';
-import ListExperiment from './components/sorting/ListExperiment';
-import MazeExperiment from './components/maze/MazeExperiment';
-import MainPage from './components/MainPage'
-import GraphExperiment from './components/graph/GraphExperiment';
-import ColorPuzzleExperiment from './components/colorpuzzle/ColorPuzzleExperiment';
-import RodExperiment from './components/rodheating/RodExperiment';
-import ThreePage from './components/ThreePage';
+import ListExperiment from './components/experiments/sorting/ListExperiment';
+import MazeExperiment from './components/experiments/maze/MazeExperiment';
+import MainPage from './components/mainpage/MainPage'
+import GraphExperiment from './components/experiments/graph/GraphExperiment';
+import ColorPuzzleExperiment from './components/experiments/colorpuzzle/ColorPuzzleExperiment';
+import RodExperiment from './components/experiments/rodheating/RodExperiment';
+import ThreePage from './components/experiments/three/ThreePage';
 
 export default function App() {
 

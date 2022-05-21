@@ -55,12 +55,6 @@ export default function ListEngine(props) {
             draw();
           }, [props.list])
 
-        //   useEffect(async () =>{
-        //     if(props.demo){
-        //         await selectionSort();
-        //         props.setDemo(false);};
-        // }, [props.demo]);
-
 
         const selectionSort = async () => {
             for(var i=0; i<lref.current.length; i++){
@@ -147,6 +141,6 @@ export default function ListEngine(props) {
         }
 
     return(
-            <canvas ref={canvasRef} style={{width:cs*cells, height:470}}/>
+            <canvas ref={canvasRef} style={{width:cs*cells, height:300}}/>
     )
 }

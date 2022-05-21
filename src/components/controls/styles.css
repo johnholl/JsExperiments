@@ -1,0 +1,76 @@
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .button {
+    width: 66%;
+    transition-duration: 0.4s;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 8px;
+    background-color: white; 
+    color: black; 
+    margin: 5px;
+  }
+  
+  /* Responsive layout - makes a one column layout instead of a two-column layout */
+  @media (min-width: 800px) {
+    .flex-container {
+      flex-direction: row;
+    }
+
+    .button {
+        width: 10%
+    }
+  }
+
+
+  .play {
+    border: 2px solid #4CAF50;
+  }
+  
+  .play:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .kill {
+    border: 2px solid #f44336;
+  }
+  
+  .kill:hover {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .new {
+    border: 2px solid purple;
+  }
+  
+  .new:hover {
+    background-color: purple;
+    color: white;
+  }
+  
+  .demo {
+    border: 2px solid goldenrod;
+  }
+  
+  .demo:hover {
+    background-color: goldenrod;
+    color: white;
+  }
+  
+  button[disabled]
+  {
+    pointer-events: none;
+    opacity: 0.5;
+  }

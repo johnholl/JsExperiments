@@ -6,11 +6,14 @@ import 'ace-builds/webpack-resolver';
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-dracula";
 
+import "./styles.css"
+
 export default function Editor(props) {
     
     return (
+      <div className="editor">
       <AceEditor
-        style={{width: 500, height:350}}
+        style={{width:"100%", height:"100%"}}
         value={props.code}
         mode="javascript"
         theme="dracula"
@@ -19,5 +22,7 @@ export default function Editor(props) {
         editorProps={{ $blockScrolling: true }}
         fontSize={14}
       />
+      </div>
+
     )
 }

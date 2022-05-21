@@ -1,8 +1,19 @@
+.experiment-page, .interface{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
 .flex-container {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
   }
-  
+
   /* Responsive layout - makes a one column layout instead of a two-column layout */
   @media (max-width: 800px) {
     .flex-container {
@@ -20,6 +31,14 @@
     padding:10px;
 }
 
+.engine-container {
+  border-style: solid;
+  border-color: black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  background-color: #F5F5F5;
+}
 
   @media only screen and (min-width: 800px) {
     .experiment-container {

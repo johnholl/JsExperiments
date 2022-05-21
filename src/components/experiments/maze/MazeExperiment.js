@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import MazeEngine from './MazeEngine';
 import { newMaze, startingMaze } from './utils';
-import Editor from '../../editor/Editor';
-import Console from '../../editor/Console';
 import Controls from '../../controls/Controls';
+
+import "../styles.css";
+import EditorConsole from '../../editor/EditorConsole';
 
 window.shouldStopCode = false;
 
@@ -36,8 +37,8 @@ export default function MazeExperiment(props) {
 
 
     return (
-      <div style={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', paddingTop:50}}>
-        <div style={{width: 1200, minHeight:"100vh", borderStyle:"solid", borderColor:"black", borderRadius:"10px", padding:"10px", backgroundColor:"#F8F7D5", fontSize:"1.5rem", fontFamily:"Andale Mono, monospace"}}>
+      <div className="experiment-page">
+        <div className="experiment-container">
           <h1>maze navigation</h1>
           <p>The term <i>maze</i> dates to the 13th century, and the concept is thousands of years old. There are a variety of techniques for navigating mazes. Try to write your own in the experiment below. Check out the <span className="demo-button" style={{padding:"5px 10px"}}>demo</span>, which uses the <b>Right-hand rule</b>.</p>
           <h3>Agent API</h3>
@@ -48,22 +49,19 @@ export default function MazeExperiment(props) {
             <li><b>walls()</b> returns a length 4 array of 1's and 0's indicating the location of walls around the agent. The order is forward, left, behind, and right. So, for example, if walls() returns [1, 0, 0, 1], this indicates there is a wall in front and to the right of the agent.  </li>
             <li><b>atGoal()</b> returns true if the agent is at the <b style={{color:"red", fontWeight:700}}>goal position</b> and false otherwise.</li>
           </ul>
-        <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-      <div className="flex-grid" style={{width:1200}}>
-        <div>
-        <Editor setVal={setEditorVal}/>
-        <Console message={consoleMessage}/>
-        </div>
-        <div style={{backgroundColor:"white"}}>
-        <MazeEngine code={editorVal} running={running} setRunning={setRunning} env={env} cellSize={25} w={21} h={21} 
+
+        <div className="interface">
+      <div className="flex-container">
+        <EditorConsole setVal={setEditorVal} message={consoleMessage}/>
+        <div className="engine-container">
+        <MazeEngine code={editorVal} running={running} setRunning={setRunning} env={env} cellSize={18} w={21} h={21} 
                 start={startingPos} end={endingPos} speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}/>
           </div>
           </div>
           <Controls val={editorVal} setCode={setCode} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializeMaze}/>
         </div>
         </div>
-        <div style={{paddingTop:50}}/>
-      </div>
+]      </div>
 
     );
 }

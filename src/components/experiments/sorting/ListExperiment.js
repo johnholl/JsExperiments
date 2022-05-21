@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ListEngine from './ListEngine';
 import { newList } from './utils';
-import Editor from '../../editor/Editor';
-import Console from '../../editor/Console';
 import EditorConsole from '../../editor/EditorConsole';
 import Controls from '../../controls/Controls';
 import '../styles.css'
@@ -34,7 +32,7 @@ export default function ListExperiment(props) {
 
 
     return (
-      <div style={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', paddingTop:50}}>
+      <div className="experiment-page">
       <div className="experiment-container">
         <h1>list sorting</h1>
         <p>Sorting is a fundamental building block of many algorithms. It is an easy problem to state: given an unsorted list of numbers, rearrange them to be in increasing order. Despite this simple formulation there are many ways of solving this problem, and choosing which one to use can be subtle.</p><p> In this experiment you are given an array called <b>arr</b> containing 20 elements. Write an algorithm that sorts arr. This should be done <em>in place</em>, meaning your code should modify values in arr rather than create a new array with sorted values.</p><p>Consider reading about and attempting the following algorithms: selection sort, insertion sort, merge sort, and quick sort. Check out the <span className="demo-button" style={{padding:"5px 10px"}}>demo</span> which uses <b>selection sort</b>.</p>
@@ -44,10 +42,11 @@ export default function ListExperiment(props) {
           <li><b>swap(i, j)</b> This will swap the ith and jth elements in arr. <em style={{color:"red"}}>Do not call it on arr ie <b>arr.swap(1,3).</b></em></li>
         </ul>
         <p>When swap is called, the two swapping values will turn dark gray. As values are placed in their correct order, they will form the colors of the <span className="rainbow-text">rainbow</span>.</p>
-    <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-      <div className="flex-container" style={{alignItems:"center", width:"100%", justifyContent:"space-around"}}>
+        
+    <div className="interface">
+      <div className="flex-container">
         <EditorConsole setVal={setEditorVal} message={consoleMessage}/>
-        <div style={{borderStyle:"solid", borderColor:"black", borderRadius:"10px", padding:"10px", margin:"10px", backgroundColor:"#F5F5F5"}}>
+        <div className="engine-container">
         <ListEngine code={editorVal} running={running} setRunning={setRunning} cellSize={18} cells={20}
                 speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}
                 list={list} setList={setList} sortedList={sortedList}/>
@@ -56,7 +55,6 @@ export default function ListExperiment(props) {
       <Controls val={editorVal} setCode={setCode} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializeList}/>
     </div>
     </div>
-    <div style={{paddingTop:50}}/>
     </div>
     );
 }

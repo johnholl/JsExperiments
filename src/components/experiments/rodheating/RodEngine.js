@@ -86,6 +86,6 @@ export default function RodEngine(props) {
         }
 
     return(
-            <canvas {...props} ref={canvasRef} style={{width:cs*cells, height:470}}/>
+            <canvas {...props} ref={canvasRef} style={{width:cs*cells, height:300}}/>
     )
 }

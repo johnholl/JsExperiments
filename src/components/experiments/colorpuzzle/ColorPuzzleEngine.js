@@ -116,9 +116,9 @@ export default function ColorPuzzleEngine(props) {
             ctx.fillStyle = '#000000';
 
             ctx.font = "bold 16px Arial";
-            ctx.fillText("initial score", cs, cs*9);
-            ctx.fillText("current score", cs*4, cs*9);
-            ctx.fillText("theoretical max", cs*7, cs*9);
+            ctx.fillText("initial", cs, cs*9);
+            ctx.fillText("current", cs*4, cs*9);
+            ctx.fillText("theoretical", cs*7, cs*9);
 
             ctx.fillText(props.score, cs, cs*9.5);
             ctx.fillText(getScore(env.current), cs*4, cs*9.5);

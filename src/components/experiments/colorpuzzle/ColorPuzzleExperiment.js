@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ColorPuzzleEngine from './ColorPuzzleEngine';
 import { getScore, newPuzzle } from './utils';
-import Editor from '../../editor/Editor';
-import Console from '../../editor/Console';
 import Controls from '../../controls/Controls';
+
+import "../styles.css";
+import EditorConsole from '../../editor/EditorConsole';
 
 window.shouldStopCode = false;
 
@@ -33,30 +34,27 @@ export default function ColorPuzzleExperiment(props) {
     if(!env || !score || !maxScore){ return(<div/>) }
 
     return (
-      <div style={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', paddingTop:50}}>
-        <div style={{width: 1200, minHeight:"100vh", borderStyle:"solid", borderColor:"black", borderRadius:"10px", padding:"10px", backgroundColor:"#F8F7D5", fontSize:"1.5rem", fontFamily:"Andale Mono, monospace"}}>
+      <div className="experiment-page">
+        <div className="experiment-container">
           <h1>a combinatorial puzzle</h1>
-          <p>The puzzle below shows a 10x10 grid of square tiles. Each of the four edges of each tile are colored either red, yellow, green, or blue. The goal is to rearrange (by swapping, but not rotating) the tiles in such a way that as many adjacent edges have the same color as possible. Currently the board has a score of {score} (try counting them to see if you get it). You can interact with the puzzle using the following API. Check out the <span className="demo-button" style={{padding:"5px 10px"}}>demo</span>, which uses <b>simulated annealing</b> to obtain an approximate solution.</p>
+          <p>The puzzle below shows a 8x10 grid of square tiles. Each of the four edges of each tile are colored either red, yellow, green, or blue.</p><p>The goal is to rearrange (by swapping, but not rotating) the tiles in such a way that as many adjacent edges have the same color as possible.</p><p>Currently the board has a score of {score} (try counting them to see if you get it). Check out the <span className="demo-button" style={{padding:"5px 10px"}}>demo</span>, which uses <b>simulated annealing</b> to obtain an approximate solution.</p><p>You can interact with the puzzle using the following API.</p>
           <h3>Puzzle API</h3>
           <ul>
             <li><b>swap(i, j, k, l)</b> swap the tile in position (i, j) with the one in position (k, l).</li>
             <li><b>getColors(i, j)</b> returns an array of four colors representing the top, left, bottom, and right colors of the tile in position (i, j).</li>
           </ul>
-        <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-      <div className="flex-grid" style={{width:1200}}>
-        <div>
-        <Editor setVal={setEditorVal}/>
-        <Console message={consoleMessage}/>
-        </div>
-        <div style={{backgroundColor:"white"}}>
-        <ColorPuzzleEngine code={editorVal} running={running} setRunning={setRunning} env={env} cellSize={56} w={10} h={10} 
+
+        <div className="interface">
+      <div className="flex-container">
+        <EditorConsole setVal={setEditorVal} message={consoleMessage}/>
+        <div className="engine-container" style={{backgroundColor:"white"}}>
+        <ColorPuzzleEngine code={editorVal} running={running} setRunning={setRunning} env={env} cellSize={32} w={10} h={10} 
                 speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} score={score} maxScore={maxScore}/>
           </div>
           </div>
           <Controls val={editorVal} setCode={setCode} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializePuzzle}/>
         </div>
         </div>
-        <div style={{paddingTop:50}}/>
       </div>
 
     );

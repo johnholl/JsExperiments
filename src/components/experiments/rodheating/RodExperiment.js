@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Editor from '../../editor/Editor';
-import Console from '../../editor/Console';
 import Controls from '../../controls/Controls';
 import RodEngine from './RodEngine';
 import { newRod } from './utils';
+
+import "../styles.css";
+import EditorConsole from '../../editor/EditorConsole';
 
 window.shouldStopCode = false;
 
@@ -32,22 +33,20 @@ export default function RodExperiment(props) {
 
 
     return (
-      <div style={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', paddingTop:50}}>
-      <div style={{width: 1200, minHeight:"100vh", borderStyle:"solid", borderColor:"black", borderRadius:"10px", padding:"10px", backgroundColor:"#F8F7D5", fontSize:"1.5rem", fontFamily:"Andale Mono, monospace"}}>
+      <div className="experiment-page">
+      <div className="experiment-container">
         <h1>rod heating</h1>
-        <p>The heat equation is one of the most well-studied partial differential equations (PDE). One of the simplest physical systems that can be analyzed is a one-dimensional rod, which can be solved exactly. Even in situations where the evolution of heat in a system cannot be solved exactly, it can be effectively simulated using local interactions. In this experiment, you are given a <em>discretized</em> one dimensional rod, represented as an array of 100 temperature values with the values at the ends (at index 0 and index 99) held fixed. Your task is to simulate the evolution of temperatures at each point in the rod, until the temperatures approach a steady state. Check out the  <text className="demo-button" style={{padding:"5px 10px"}}>demo</text> which uses the <b>Gauss-Seidel algorithm</b>.</p>
+        <p>The heat equation is a well-studied partial differential equation (PDE). One simple physical system whose heat equation can be readily solved is that of a one-dimensional rod.</p><p>Even in situations where the evolution of heat in a system cannot be solved exactly, it can be effectively simulated using local interactions. In this experiment, you are given a <em>discretized</em> one dimensional rod, represented as an array of 100 temperature values with the values at the ends (at index 0 and index 99) held fixed.</p><p> Your task is to simulate the evolution of temperatures at each point in the rod, until the temperatures approach a steady state. Check out the  <text className="demo-button" style={{padding:"5px 10px"}}>demo</text> which uses a simple version of the <b>Gauss-Seidel algorithm</b>.</p>
         <h3>Rod API</h3>
         <ul>
           <li><b>rod</b> An array of temperatures.</li>
         </ul>
-    <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-      <div className="flex-grid" style={{width:1200}}>
-        <div style={{borderColor:"black", borderStyle:"solid"}}>
-        <Editor setVal={setEditorVal}/>
-        <Console message={consoleMessage}/>
-        </div>
-        <div style={{borderStyle:"solid", borderColor:"black", borderRadius:"10px", padding:"10px", backgroundColor:"#F5F5F5"}}>
-        <RodEngine code={editorVal} running={running} setRunning={setRunning} cellSize={30} cells={20}
+
+    <div className="interface">
+      <div className="flex-container">
+        <EditorConsole setVal={setEditorVal} message={consoleMessage}/>
+        <div className="engine-container">
+        <RodEngine code={editorVal} running={running} setRunning={setRunning} cellSize={18} cells={20}
                 speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}
                 rod={rod} setRod={setRod} eqRod={eqRod}/>
         </div>
@@ -55,7 +54,6 @@ export default function RodExperiment(props) {
       <Controls val={editorVal} setCode={setCode} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializeRod}/>
     </div>
     </div>
-    <div style={{paddingTop:50}}/>
     </div>
     );
 }

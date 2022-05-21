@@ -7,7 +7,7 @@ async function sleepA(ms) {
 }
 
 const eps = 1;
-const scale = 50;
+const scale = 40;
 
 export default function GraphEngine(props) {
 
@@ -119,6 +119,6 @@ export default function GraphEngine(props) {
         return(<div/>)
     }
     return(
-            <canvas ref={canvasRef} style={{width:500, height:500}}/>
+            <canvas ref={canvasRef} style={{width:9*scale, height:9*scale}}/>
     )
 }

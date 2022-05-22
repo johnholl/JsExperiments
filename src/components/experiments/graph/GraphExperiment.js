@@ -45,10 +45,9 @@ export default function GraphExperiment(props) {
         <p>Graphs are powerful modelling tools that can be used to describe all kinds of phenomena including information networks, food webs, weather patterns, and roads.</p><p>Graph visualization in two dimensions is a useful tool for cursory analysis of a graph's structure. In this experiment you will have the ability to move the nodes of a graph around, with the goal of separating the graph and making easy to understand.</p><p> Check out the <span className="demo-button" style={{padding:"5px 10px"}}>demo</span>, which uses a <a href="https://en.wikipedia.org/wiki/Force-directed_graph_drawing">force directed</a> algorithm.</p>
         <h3>Graph API</h3>
         <ul>
-          <li><b>edgeList</b> Any array of length two arrays consisting of the edges of the graph</li>
-          <li><b>nodes</b> A list of nodes 0,...,n </li>
-          <li><b>locations</b> An array of length two arrays where entry i is the [x, y] coordinates of node i. These correspond to the locations of the black squares shown below (appropriately scaled and centered). Initially all coordinates are randomly selected between 0 and 5.</li>
-          <li><b>setLocations(newLocations)</b> A method that changes the locations array to <b>newLocations</b>. This way of updating the locations array will animate the display. If you call <b>setLocations</b> inside a loop, your algorithm will be animated in the display. If you only call it at the end of your location calculating algorithm, the graph will instantly jump to the final node locations.</li>
+          <li><b>edgeList</b> An array of length two arrays consisting of the edges of the graph</li>
+          <li><b>locations</b> An array of length two arrays where entry i is the [x, y] coordinates of node i. These correspond to the locations of the black squares shown below (appropriately scaled and centered). Initially all coordinates are randomly selected between -2.5 and 2.5.</li>
+          <li><b>animate()</b> Call this method to update the display after making changes to <b>locations</b>.</li>
         </ul>
         <p>Write a method that modifies location that makes the graph look nice :)</p>
     <div className="interface">

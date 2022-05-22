@@ -30,7 +30,6 @@ export default function ListExperiment(props) {
       setSortedList(sortedList);
   }
 
-
     return (
       <div className="experiment-page">
       <div className="experiment-container">

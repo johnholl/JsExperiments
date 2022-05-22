@@ -2,6 +2,15 @@ import React, {useEffect, useRef, useState} from 'react';
 import { processCode } from './utils';
 import {forceCoulomb, forceHooke, distance} from './utils';
 
+const sample = `for(var i=0; i<10000; i++){
+    if (window.shouldStopCode) { throw new Error('CODE STOPPED')}
+    updateLocation();
+    if(i%1==0){
+        await sleepA(speed/10);
+        animate();
+    }
+}`
+
 async function sleepA(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -16,7 +25,7 @@ export default function GraphEngine(props) {
         const canvasRef = useRef(null);
         const graph = props.graph;
         const [nodes, setNodes] = useState(props.nodes);
-        const locations = useRef(props.locations);
+        const locations = useRef([...props.locations]);
         const velocities = useRef(Array(nodes.length).fill([0,0]));
         const speed = props.speed;
         const setConsoleMessage = props.setConsoleMessage; 
@@ -33,41 +42,26 @@ export default function GraphEngine(props) {
 
           useEffect(() => {
               if(!running){
-                  locations.current = props.locations;
-                  animateGraph();
+                  locations.current = [...props.locations];
+                  animate();
               } else if(running == "demo"){
-                runCode(`for(var i=0; i<1000; i++){
-                    if (window.shouldStopCode) { throw new Error('CODE STOPPED')}
-                    updateLocation();
-                    if(i%1==0){
-                        await sleepA(10);
-                        animateGraph();
-                    }
-                }`);
+                runCode(sample);
               } else{
                   runCode();
               }
           }, [running])
 
           useEffect(() => {
-              locations.current = props.locations
-            animateGraph();
+              locations.current = [...props.locations]
+            animate();
           }, [graph])
 
           const setLocations = async (newLocations) => {
               await sleepA(speed);
               locations.current = newLocations;
-              animateGraph();
+              animate();
 
           }
-
-        const forceDirected = async () => {
-            for(var i=0; i<1000; i++){
-                updateLocation()
-                await sleepA(1)
-                animateGraph();
-            }
-        }
         
             const updateLocation = () => {
             const ls = locations.current;
@@ -92,8 +86,7 @@ export default function GraphEngine(props) {
         }
 
 
-        const animateGraph = () => {
-            // requestAnimationFrame(() => {
+        const animate = () => {
                 const canvas = canvasRef.current
                 const ctx = canvas.getContext('2d')
                 canvas.width = 500;
@@ -112,7 +105,6 @@ export default function GraphEngine(props) {
                     ctx.lineTo(scale*ls[e[1]][0]+255, scale*ls[e[1]][1]+255);
                     ctx.stroke();
                 })
-            // });
         }
 
     if(!locations){

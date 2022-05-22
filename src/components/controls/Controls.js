@@ -35,8 +35,8 @@ export default function Controls(props) {
             <div style={{width:200}}>
                 <span style={{color:"white", fontWeight:700, fontSize:"14px"}}>actions per second</span>
                 <Slider
-                handleStyle={{backgroundColor:"black"}}
-                trackStyle={{backgroundColor:"black"}}
+                handleStyle={{backgroundColor:"white"}}
+                trackStyle={{backgroundColor:"white"}}
                 disabled={running}
                 min={1}
                 max={20}

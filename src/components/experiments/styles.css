@@ -33,12 +33,19 @@
 }
 
 .engine-container {
+  background-color:"red";
+  width:"50%";
   border-style: solid;
   border-color: black;
   border-radius: 10px;
   padding: 10px;
   margin: 10px;
   background-color: #F5F5F5;
+}
+
+canvas {
+  width: 250px;
+  height: 250px;
 }
 
   @media only screen and (min-width: 800px) {
@@ -50,5 +57,10 @@
         border-radius:10px;
         margin-top:50px;
     
+    }
+
+    canvas {
+      width: 500px;
+      height: 500px;
     }
   }

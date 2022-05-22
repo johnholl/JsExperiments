@@ -168,6 +168,6 @@ export default function MazeEngine(props) {
         }
 
     return(
-            <canvas ref={canvasRef} style={{width:cs*(w-1), height:cs*(h-1)}}/>
+            <canvas ref={canvasRef}/>
     )
 }

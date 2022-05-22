@@ -27,7 +27,7 @@ export default function Controls(props) {
     }
 
     return(
-        <div className="flex-container" style={{marginTop:20, width:"100%", backgroundColor:"steelblue", borderRadius:"8px"}}>
+        <div className="flex-container" style={{marginTop:20, width:"100%", backgroundColor:"steelblue", borderRadius:"8px", justifyContent:"space-around"}}>
             <button className="play button" disabled={running} onClick={runCode}>Run</button>
             <button className="demo button" disabled={running} onClick={startDemo}>demo</button>
             <button className="new button" disabled={running} onClick={resetGraph}>new</button>

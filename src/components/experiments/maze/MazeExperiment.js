@@ -40,7 +40,7 @@ export default function MazeExperiment(props) {
       <div className="experiment-page">
         <div className="experiment-container">
           <h1>maze navigation</h1>
-          <p>The term <i>maze</i> dates to the 13th century, and the concept is thousands of years old. There are a variety of techniques for navigating mazes. Try to write your own in the experiment below. Check out the <span className="demo-button" style={{padding:"5px 10px"}}>demo</span>, which uses the <b>Right-hand rule</b>.</p>
+          <p>The term <i>maze</i> dates to the 13th century, and the concept is thousands of years old. There are a variety of techniques for navigating mazes. Try to write your own in the experiment below. Check out the <span className="demo-button" style={{padding:"5px 10px"}}>demo</span>, which uses <a href="https://en.wikipedia.org/wiki/Maze-solving_algorithm#Wall_follower">wall following</a>.</p>
           <h3>Agent API</h3>
           <ul>
             <li><b>move()</b> will move the <b style={{backgroundColor:"black", color:"yellow", fontWeight:700}}>agent</b> forward one space if it is not blocked by a wall.</li>
@@ -54,7 +54,7 @@ export default function MazeExperiment(props) {
       <div className="flex-container">
         <EditorConsole setVal={setEditorVal} message={consoleMessage}/>
         <div className="engine-container">
-        <MazeEngine code={editorVal} running={running} setRunning={setRunning} env={env} cellSize={18} w={21} h={21} 
+        <MazeEngine code={editorVal} running={running} setRunning={setRunning} env={env} cellSize={14} w={21} h={21} 
                 start={startingPos} end={endingPos} speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}/>
           </div>
           </div>

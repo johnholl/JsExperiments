@@ -42,7 +42,7 @@ export default function GraphExperiment(props) {
       <div className="experiment-page">
       <div className="experiment-container">
         <h1>graph visualization</h1>
-        <p>Graphs are powerful modelling tools that can be used to describe all kinds of phenomena including information networks, food webs, weather patterns, and roads.</p><p>Graph visualization in two dimensions is a useful tool for cursory analysis of a graph's structure. In this experiment you will have the ability to move the nodes of a graph around, with the goal of separating the graph and making easy to understand.</p><p> Check out the <span className="demo-button" style={{padding:"5px 10px"}}>demo</span>, which uses a <b>force-directed</b> algorithm.</p>
+        <p>Graphs are powerful modelling tools that can be used to describe all kinds of phenomena including information networks, food webs, weather patterns, and roads.</p><p>Graph visualization in two dimensions is a useful tool for cursory analysis of a graph's structure. In this experiment you will have the ability to move the nodes of a graph around, with the goal of separating the graph and making easy to understand.</p><p> Check out the <span className="demo-button" style={{padding:"5px 10px"}}>demo</span>, which uses a <a href="https://en.wikipedia.org/wiki/Force-directed_graph_drawing">force directed</a> algorithm.</p>
         <h3>Graph API</h3>
         <ul>
           <li><b>edgeList</b> Any array of length two arrays consisting of the edges of the graph</li>

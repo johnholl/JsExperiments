@@ -119,6 +119,6 @@ export default function GraphEngine(props) {
         return(<div/>)
     }
     return(
-            <canvas ref={canvasRef} style={{width:9*scale, height:9*scale}}/>
+            <canvas ref={canvasRef} style={{width:7*scale, height:7*scale}}/>
     )
 }

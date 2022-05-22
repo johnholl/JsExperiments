@@ -35,7 +35,7 @@ export default function ListExperiment(props) {
       <div className="experiment-page">
       <div className="experiment-container">
         <h1>list sorting</h1>
-        <p>Sorting is a fundamental building block of many algorithms. It is an easy problem to state: given an unsorted list of numbers, rearrange them to be in increasing order. Despite this simple formulation there are many ways of solving this problem, and choosing which one to use can be subtle.</p><p> In this experiment you are given an array called <b>arr</b> containing 20 elements. Write an algorithm that sorts arr. This should be done <em>in place</em>, meaning your code should modify values in arr rather than create a new array with sorted values.</p><p>Consider reading about and attempting the following algorithms: selection sort, insertion sort, merge sort, and quick sort. Check out the <span className="demo-button" style={{padding:"5px 10px"}}>demo</span> which uses <b>selection sort</b>.</p>
+        <p>Sorting is a fundamental building block of many algorithms. It is an easy problem to state: given an unsorted list of numbers, rearrange them to be in increasing order. Despite this simple formulation there are many ways of solving this problem, and choosing which one to use can be subtle.</p><p> In this experiment you are given an array called <b>arr</b> containing 20 elements. Write an algorithm that sorts arr. This should be done <em>in place</em>, meaning your code should modify values in arr rather than create a new array with sorted values.</p><p>Consider reading about and attempting the following algorithms: <a href="https://en.wikipedia.org/wiki/Selection_sort">Selection sort</a>, <a href="https://en.wikipedia.org/wiki/Insertion_sort">Insertion sort</a>, <a href="https://en.wikipedia.org/wiki/Merge_sort">Merge sort</a>, and <a href="https://en.wikipedia.org/wiki/Quicksort">Quicksort</a>. Check out the <span className="demo-button" style={{padding:"5px 10px"}}>demo</span> which uses <b>Selection sort</b>.</p>
         <h3>Sorting API</h3>
         <ul>
           <li><b>arr</b> The array to sort. It consists of 20 elements with values between 0 and 100.</li>
@@ -47,7 +47,7 @@ export default function ListExperiment(props) {
       <div className="flex-container">
         <EditorConsole setVal={setEditorVal} message={consoleMessage}/>
         <div className="engine-container">
-        <ListEngine code={editorVal} running={running} setRunning={setRunning} cellSize={18} cells={20}
+        <ListEngine code={editorVal} running={running} setRunning={setRunning} cellSize={14} cells={20}
                 speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}
                 list={list} setList={setList} sortedList={sortedList}/>
         </div>

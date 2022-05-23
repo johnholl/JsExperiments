@@ -2,12 +2,14 @@ import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { Slider } from 'antd';
 import { setRun } from '../reducers/runReducers'
+import { setSpeed } from '../reducers/speedReducers';
 import "./styles.css";
 
 export default function Controls(props) {
-    const setRunning = props.setRunning;
-    const running = useSelector((state) => state.run.value[props.id])
+    const running = useSelector((state) => state.run.value[props.id]);
+    const speed = useSelector((state) => state.speed.value[props.id] || 1);
     const dispatch = useDispatch();
+
     const [buffering, setBuffering] = useState(false);
 
     const runCode = () => {
@@ -43,8 +45,8 @@ export default function Controls(props) {
                 disabled={running}
                 min={1}
                 max={20}
-                onChange={props.changeSpeed}
-                value={typeof props.speed === 'number' ? props.speed : 0}/>
+                onChange={v => dispatch(setSpeed({id: props.id, value: v}))}
+                value={speed}/>
             </div>
         </div>
     )

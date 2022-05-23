@@ -15,7 +15,6 @@ export default function RodExperiment(props) {
     const [code, setCode] = useState('');
     // boolean whether experiment has been ran. Reset sets back to false
     const [running, setRunning] = useState(false);
-    const [speed, setSpeed] = useState(1);
     const [consoleMessage, setConsoleMessage] = useState("");
 
     // list state
@@ -49,11 +48,11 @@ export default function RodExperiment(props) {
         <EditorConsole setVal={setEditorVal} message={consoleMessage} id={EXPERIMENT_ID}/>
         <div className="engine-container">
         <RodEngine code={editorVal} running={running} setRunning={setRunning} cellSize={30} cells={20}
-                speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}
+                setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}
                 rod={rod} setRod={setRod} eqRod={eqRod} id={EXPERIMENT_ID}/>
         </div>
       </div>
-      <Controls speed={speed} changeSpeed={setSpeed} initialize={initializeRod} id={EXPERIMENT_ID}/>
+      <Controls initialize={initializeRod} id={EXPERIMENT_ID}/>
     </div>
     </div>
     </div>

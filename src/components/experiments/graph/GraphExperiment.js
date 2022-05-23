@@ -9,8 +9,6 @@ window.shouldStopCode = false;
 const EXPERIMENT_ID = "graph"
 
 export default function GraphExperiment(props) {
-    const [editorVal, setEditorVal] = useState('');
-    const [speed, setSpeed] = useState(1);
     const [consoleMessage, setConsoleMessage] = useState("");
 
     // graph state
@@ -49,10 +47,10 @@ export default function GraphExperiment(props) {
       <div className="flex-container">
         <EditorConsole message={consoleMessage} id={EXPERIMENT_ID}/>
         <div className="engine-container">
-        <GraphEngine speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} graph={graph} nodes={nodes} locations={locations} id={EXPERIMENT_ID}/>
+        <GraphEngine setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} graph={graph} nodes={nodes} locations={locations} id={EXPERIMENT_ID}/>
         </div>
       </div>
-      <Controls speed={speed} changeSpeed={setSpeed} initialize={initializeGraph} id={EXPERIMENT_ID}/>
+      <Controls initialize={initializeGraph} id={EXPERIMENT_ID}/>
     </div>
     </div>
     <div style={{paddingTop:50}}/>

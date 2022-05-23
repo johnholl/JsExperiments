@@ -13,7 +13,6 @@ export default function ColorPuzzleExperiment(props) {
     const [editorVal, setEditorVal] = useState('');
     const [code, setCode] = useState('');
     const [running, setRunning] = useState(false);
-    const [speed, setSpeed] = useState(1);
     const [consoleMessage, setConsoleMessage] = useState("");
 
     const [env, setEnv] = useState(null)
@@ -50,10 +49,10 @@ export default function ColorPuzzleExperiment(props) {
         <EditorConsole setVal={setEditorVal} message={consoleMessage} id={EXPERIMENT_ID}/>
         <div className="engine-container" style={{backgroundColor:"white"}}>
         <ColorPuzzleEngine code={editorVal} running={running} setRunning={setRunning} env={env} cellSize={32} w={10} h={10} 
-                speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} score={score} maxScore={maxScore} id={EXPERIMENT_ID}/>
+          setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} score={score} maxScore={maxScore} id={EXPERIMENT_ID}/>
           </div>
           </div>
-          <Controls speed={speed} changeSpeed={setSpeed} initialize={initializePuzzle} id={EXPERIMENT_ID}/>
+          <Controls initialize={initializePuzzle} id={EXPERIMENT_ID}/>
         </div>
         </div>
       </div>

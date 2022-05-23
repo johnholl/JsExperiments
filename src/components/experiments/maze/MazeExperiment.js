@@ -17,7 +17,6 @@ export default function MazeExperiment(props) {
     const [running, setRunning] = useState(false);
     // whether experiment succeeded
     const [success, setSuccess] = useState(false);
-    const [speed, setSpeed] = useState(1);
     const [consoleMessage, setConsoleMessage] = useState("");
 
     // maze state
@@ -56,10 +55,10 @@ export default function MazeExperiment(props) {
         <EditorConsole setVal={setEditorVal} message={consoleMessage} id={EXPERIMENT_ID}/>
         <div className="engine-container">
         <MazeEngine code={editorVal} running={running} setRunning={setRunning} env={env} cellSize={14} w={21} h={21} 
-                start={startingPos} end={endingPos} speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} id={EXPERIMENT_ID}/>
+                start={startingPos} end={endingPos} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} id={EXPERIMENT_ID}/>
           </div>
           </div>
-          <Controls speed={speed} changeSpeed={setSpeed} initialize={initializeMaze} id={EXPERIMENT_ID}/>
+          <Controls initialize={initializeMaze} id={EXPERIMENT_ID}/>
         </div>
         </div>
 ]      </div>

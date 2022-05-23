@@ -14,7 +14,6 @@ export default function ListExperiment(props) {
     const [code, setCode] = useState('');
     // boolean whether experiment has been ran. Reset sets back to false
     const [running, setRunning] = useState(false);
-    const [speed, setSpeed] = useState(1);
     const [consoleMessage, setConsoleMessage] = useState("");
 
     // list state
@@ -48,11 +47,11 @@ export default function ListExperiment(props) {
         <EditorConsole setVal={setEditorVal} message={consoleMessage} id={EXPERIMENT_ID}/>
         <div className="engine-container">
         <ListEngine code={editorVal} running={running} setRunning={setRunning} cellSize={14} cells={20}
-                speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}
+                setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}
                 list={list} setList={setList} sortedList={sortedList} id={EXPERIMENT_ID}/>
         </div>
       </div>
-      <Controls val={editorVal} speed={speed} changeSpeed={setSpeed} initialize={initializeList} id={EXPERIMENT_ID}/>
+      <Controls initialize={initializeList} id={EXPERIMENT_ID}/>
     </div>
     </div>
     </div>

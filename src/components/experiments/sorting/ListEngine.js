@@ -12,12 +12,12 @@ export default function ListEngine(props) {
 
         const code = useSelector((state) => state.code.value[props.id])
         const running = useSelector((state) => state.run.value[props.id])
+        const speed = useSelector((state) => 1000/(state.speed.value[props.id] || 1));
         const canvasRef = useRef(null);
         const cs = props.cellSize;
         const cells = props.cells;
         const sortedList = props.sortedList;
         const lref = useRef(props.list);
-        const speed = props.speed;
         const setConsoleMessage = props.setConsoleMessage; 
         const starttime = useRef(null);
 

@@ -32,7 +32,7 @@ export default function RodEngine(props) {
           useEffect(() => {
               if(!running){
                   rRef.current = [...props.rod];
-                  draw();
+                  animate();
               } else if(running == "demo"){
                 runCode(`
                 let nextVals = [...rRef.current];
@@ -42,7 +42,7 @@ export default function RodEngine(props) {
                         nextVals[j] = 0.33*rRef.current[j-1] + 0.33*rRef.current[j+1] + 0.34*rRef.current[j];
                     }
                     rRef.current = [...nextVals];
-                    if(i%10==0){await sleepA(10);draw();}
+                    if(i%10==0){await sleepA(10);animate();}
                 }`)
               } else{
                   runCode();
@@ -51,7 +51,7 @@ export default function RodEngine(props) {
 
           useEffect(() => {
             rRef.current = [...props.rod];
-            draw();
+            animate();
           }, [props.rod])
 
           const solve = async () => {
@@ -62,11 +62,11 @@ export default function RodEngine(props) {
                     nextVals[j] = 0.33*rRef.current[j-1] + 0.33*rRef.current[j+1] + 0.34*rRef.current[j];
                 }
                 rRef.current = [...nextVals];
-                if(i%1==0){await sleepA(1000);draw();}
+                if(i%1==0){await sleepA(1000);animate();}
             }
         }
 
-        const draw = () => {
+        const animate = () => {
             const canvas = canvasRef.current
             const ctx = canvas.getContext('2d')
             canvas.width = cs*cells;

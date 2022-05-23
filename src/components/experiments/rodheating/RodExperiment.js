@@ -40,13 +40,14 @@ export default function RodExperiment(props) {
         <h3>Rod API</h3>
         <ul>
           <li><b>rod</b> An array of temperatures.</li>
+          <li><b>animate()</b> Call this method to update the display after making changes to <b>rod</b>.</li>
         </ul>
 
     <div className="interface">
       <div className="flex-container">
         <EditorConsole setVal={setEditorVal} message={consoleMessage}/>
         <div className="engine-container">
-        <RodEngine code={editorVal} running={running} setRunning={setRunning} cellSize={14} cells={20}
+        <RodEngine code={editorVal} running={running} setRunning={setRunning} cellSize={30} cells={20}
                 speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}
                 rod={rod} setRod={setRod} eqRod={eqRod}/>
         </div>

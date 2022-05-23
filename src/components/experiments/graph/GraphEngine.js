@@ -2,14 +2,15 @@ import React, {useEffect, useRef, useState} from 'react';
 import { processCode } from './utils';
 import {forceCoulomb, forceHooke, distance} from './utils';
 
-const sample = `for(var i=0; i<10000; i++){
+const sample = `for(var i=0; i<1000; i++){
     if (window.shouldStopCode) { throw new Error('CODE STOPPED')}
     updateLocation();
     if(i%1==0){
-        await sleepA(speed/10);
+        await sleepA(10);
         animate();
+        }
     }
-}`
+    animate();`
 
 async function sleepA(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -55,13 +56,6 @@ export default function GraphEngine(props) {
               locations.current = [...props.locations]
             animate();
           }, [graph])
-
-          const setLocations = async (newLocations) => {
-              await sleepA(speed);
-              locations.current = newLocations;
-              animate();
-
-          }
         
             const updateLocation = () => {
             const ls = locations.current;
@@ -86,7 +80,8 @@ export default function GraphEngine(props) {
         }
 
 
-        const animate = () => {
+        const animate = async () => {
+                await sleepA(speed/10);
                 const canvas = canvasRef.current
                 const ctx = canvas.getContext('2d')
                 canvas.width = 500;

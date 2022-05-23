@@ -1,5 +1,5 @@
 export function processCode(code) {
-    let internalCode = code.replaceAll("setLocations", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} await setLocations")
+    let internalCode = code.replaceAll("animate", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} await animate")
     .replaceAll("locations", "locations.current")
     .replaceAll(/console\.log\(([^)]+)\)/g, "x=x + $1 + \"\\n\"; setConsoleMessage\(x\);");
     internalCode = "try{" + internalCode + "} catch(error){setConsoleMessage((msg) =>msg + error.message)}";

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import GraphEngine from './GraphEngine';
 import { newGraph } from './utils';
 import Controls from '../../controls/Controls';
-
 import "../styles.css";
 import EditorConsole from '../../editor/EditorConsole';
 
@@ -11,10 +10,6 @@ const EXPERIMENT_ID = "graph"
 
 export default function GraphExperiment(props) {
     const [editorVal, setEditorVal] = useState('');
-    // temporary holder for code as it's being written
-    // boolean whether experiment has been ran. Reset sets back to false
-    const [running, setRunning] = useState(false);
-    // whether experiment succeeded
     const [speed, setSpeed] = useState(1);
     const [consoleMessage, setConsoleMessage] = useState("");
 
@@ -52,12 +47,12 @@ export default function GraphExperiment(props) {
         <p>Write a method that modifies location that makes the graph look nice :)</p>
     <div className="interface">
       <div className="flex-container">
-        <EditorConsole setVal={setEditorVal} message={consoleMessage} id={EXPERIMENT_ID}/>
+        <EditorConsole message={consoleMessage} id={EXPERIMENT_ID}/>
         <div className="engine-container">
-        <GraphEngine running={running} speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} graph={graph} nodes={nodes} locations={locations} id={EXPERIMENT_ID}/>
+        <GraphEngine speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} graph={graph} nodes={nodes} locations={locations} id={EXPERIMENT_ID}/>
         </div>
       </div>
-      <Controls val={editorVal} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializeGraph}/>
+      <Controls speed={speed} changeSpeed={setSpeed} initialize={initializeGraph} id={EXPERIMENT_ID}/>
     </div>
     </div>
     <div style={{paddingTop:50}}/>

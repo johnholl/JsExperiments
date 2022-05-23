@@ -11,7 +11,7 @@ const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 export default function RodEngine(props) {
 
         const code = useSelector((state) => state.code.value[props.id])
-        const running = props.running;
+        const running = useSelector((state) => state.run.value[props.id])
         const canvasRef = useRef(null);
         const cs = props.cellSize;
         const cells = props.cells;

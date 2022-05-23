@@ -52,7 +52,7 @@ export default function ListExperiment(props) {
                 list={list} setList={setList} sortedList={sortedList} id={EXPERIMENT_ID}/>
         </div>
       </div>
-      <Controls val={editorVal} setCode={setCode} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializeList}/>
+      <Controls val={editorVal} speed={speed} changeSpeed={setSpeed} initialize={initializeList} id={EXPERIMENT_ID}/>
     </div>
     </div>
     </div>

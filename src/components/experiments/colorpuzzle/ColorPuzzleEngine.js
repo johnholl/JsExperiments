@@ -8,7 +8,7 @@ async function sleepA(ms) { return new Promise(resolve => setTimeout(resolve, ms
 export default function ColorPuzzleEngine(props) {
 
         const code = useSelector((state) => state.code.value[props.id])
-        const running = props.running;
+        const running = useSelector((state) => state.run.value[props.id])
         const canvasRef = useRef(null);
         const cs = props.cellSize;
         const h = props.h;

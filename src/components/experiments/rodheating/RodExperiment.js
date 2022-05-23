@@ -53,7 +53,7 @@ export default function RodExperiment(props) {
                 rod={rod} setRod={setRod} eqRod={eqRod} id={EXPERIMENT_ID}/>
         </div>
       </div>
-      <Controls val={editorVal} setCode={setCode} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializeRod}/>
+      <Controls speed={speed} changeSpeed={setSpeed} initialize={initializeRod} id={EXPERIMENT_ID}/>
     </div>
     </div>
     </div>

@@ -59,7 +59,7 @@ export default function MazeExperiment(props) {
                 start={startingPos} end={endingPos} speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} id={EXPERIMENT_ID}/>
           </div>
           </div>
-          <Controls val={editorVal} setCode={setCode} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializeMaze}/>
+          <Controls speed={speed} changeSpeed={setSpeed} initialize={initializeMaze} id={EXPERIMENT_ID}/>
         </div>
         </div>
 ]      </div>

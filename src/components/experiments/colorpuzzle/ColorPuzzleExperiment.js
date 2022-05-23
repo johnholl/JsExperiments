@@ -53,7 +53,7 @@ export default function ColorPuzzleExperiment(props) {
                 speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} score={score} maxScore={maxScore} id={EXPERIMENT_ID}/>
           </div>
           </div>
-          <Controls val={editorVal} setCode={setCode} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializePuzzle}/>
+          <Controls speed={speed} changeSpeed={setSpeed} initialize={initializePuzzle} id={EXPERIMENT_ID}/>
         </div>
         </div>
       </div>

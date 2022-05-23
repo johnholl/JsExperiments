@@ -22,7 +22,7 @@ const scale = 40;
 export default function GraphEngine(props) {
         const code = useSelector((state) => state.code.value[props.id])
 
-        const running = props.running;
+        const running = useSelector((state) => state.run.value[props.id])
         const canvasRef = useRef(null);
         const graph = props.graph;
         const [nodes, setNodes] = useState(props.nodes);

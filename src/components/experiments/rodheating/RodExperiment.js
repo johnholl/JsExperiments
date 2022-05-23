@@ -7,6 +7,7 @@ import "../styles.css";
 import EditorConsole from '../../editor/EditorConsole';
 
 window.shouldStopCode = false;
+const EXPERIMENT_ID = "rodheat";
 
 export default function RodExperiment(props) {
     const [editorVal, setEditorVal] = useState('');
@@ -45,11 +46,11 @@ export default function RodExperiment(props) {
 
     <div className="interface">
       <div className="flex-container">
-        <EditorConsole setVal={setEditorVal} message={consoleMessage}/>
+        <EditorConsole setVal={setEditorVal} message={consoleMessage} id={EXPERIMENT_ID}/>
         <div className="engine-container">
         <RodEngine code={editorVal} running={running} setRunning={setRunning} cellSize={30} cells={20}
                 speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}
-                rod={rod} setRod={setRod} eqRod={eqRod}/>
+                rod={rod} setRod={setRod} eqRod={eqRod} id={EXPERIMENT_ID}/>
         </div>
       </div>
       <Controls val={editorVal} setCode={setCode} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializeRod}/>

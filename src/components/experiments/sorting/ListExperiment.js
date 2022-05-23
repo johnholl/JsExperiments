@@ -6,6 +6,7 @@ import Controls from '../../controls/Controls';
 import '../styles.css'
 
 window.shouldStopCode = false;
+const EXPERIMENT_ID = "sort"
 
 export default function ListExperiment(props) {
     const [editorVal, setEditorVal] = useState('');
@@ -44,11 +45,11 @@ export default function ListExperiment(props) {
         
     <div className="interface">
       <div className="flex-container">
-        <EditorConsole setVal={setEditorVal} message={consoleMessage}/>
+        <EditorConsole setVal={setEditorVal} message={consoleMessage} id={EXPERIMENT_ID}/>
         <div className="engine-container">
         <ListEngine code={editorVal} running={running} setRunning={setRunning} cellSize={14} cells={20}
                 speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}
-                list={list} setList={setList} sortedList={sortedList}/>
+                list={list} setList={setList} sortedList={sortedList} id={EXPERIMENT_ID}/>
         </div>
       </div>
       <Controls val={editorVal} setCode={setCode} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializeList}/>

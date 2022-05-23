@@ -1,10 +1,10 @@
 import React, {useEffect, useState, useRef} from 'react';
-import { Slider } from 'antd';
+import {useSelector} from 'react-redux';
 import { processCode } from './utils';
 
 export default function MazeEngine(props) {
 
-        const code = props.code;
+        const code = useSelector((state) => state.code.value[props.id])
         const running = props.running;
         const canvasRef = useRef(null);
         const cs = props.cellSize;
@@ -24,7 +24,8 @@ export default function MazeEngine(props) {
             if(demoCode){
                 eval(processCode(demoCode))
             } else{
-                eval(processCode(code));
+                console.log(code);
+                eval(processCode(code || ""));
             }
         }
 

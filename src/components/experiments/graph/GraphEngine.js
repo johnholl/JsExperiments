@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
-import { processCode } from './utils';
-import {forceCoulomb, forceHooke, distance} from './utils';
+import { useSelector } from 'react-redux'
+import { processCode, forceCoulomb, forceHooke, distance} from './utils';
 
 const sample = `for(var i=0; i<1000; i++){
     if (window.shouldStopCode) { throw new Error('CODE STOPPED')}
@@ -20,8 +20,8 @@ const eps = 1;
 const scale = 40;
 
 export default function GraphEngine(props) {
+        const code = useSelector((state) => state.code.value[props.id])
 
-        const code = props.code;
         const running = props.running;
         const canvasRef = useRef(null);
         const graph = props.graph;
@@ -37,7 +37,7 @@ export default function GraphEngine(props) {
                 eval(processCode(demoCode));
             }
             else {
-                eval(processCode(code));
+                eval(processCode(code || ""));
             }
         }
 

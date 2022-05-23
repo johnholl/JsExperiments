@@ -5,7 +5,7 @@ export default function EditorConsole(props) {
 
     return(
         <div className="editor-console">
-        <Editor setVal={props.setVal}/>
+        <Editor setVal={props.setVal} id={props.id}/>
         <Console message={props.message}/>
         </div>
     )

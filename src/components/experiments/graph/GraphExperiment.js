@@ -7,11 +7,11 @@ import "../styles.css";
 import EditorConsole from '../../editor/EditorConsole';
 
 window.shouldStopCode = false;
+const EXPERIMENT_ID = "graph"
 
 export default function GraphExperiment(props) {
     const [editorVal, setEditorVal] = useState('');
     // temporary holder for code as it's being written
-    const [code, setCode] = useState('');
     // boolean whether experiment has been ran. Reset sets back to false
     const [running, setRunning] = useState(false);
     // whether experiment succeeded
@@ -52,12 +52,12 @@ export default function GraphExperiment(props) {
         <p>Write a method that modifies location that makes the graph look nice :)</p>
     <div className="interface">
       <div className="flex-container">
-        <EditorConsole setVal={setEditorVal} message={consoleMessage}/>
+        <EditorConsole setVal={setEditorVal} message={consoleMessage} id={EXPERIMENT_ID}/>
         <div className="engine-container">
-        <GraphEngine code={editorVal} running={running} speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} graph={graph} nodes={nodes} locations={locations}/>
+        <GraphEngine running={running} speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} graph={graph} nodes={nodes} locations={locations} id={EXPERIMENT_ID}/>
         </div>
       </div>
-      <Controls val={editorVal} setCode={setCode} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializeGraph}/>
+      <Controls val={editorVal} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializeGraph}/>
     </div>
     </div>
     <div style={{paddingTop:50}}/>

@@ -7,6 +7,7 @@ import "../styles.css";
 import EditorConsole from '../../editor/EditorConsole';
 
 window.shouldStopCode = false;
+const EXPERIMENT_ID = "colorpuzzle";
 
 export default function ColorPuzzleExperiment(props) {
     const [editorVal, setEditorVal] = useState('');
@@ -46,10 +47,10 @@ export default function ColorPuzzleExperiment(props) {
 
         <div className="interface">
       <div className="flex-container">
-        <EditorConsole setVal={setEditorVal} message={consoleMessage}/>
+        <EditorConsole setVal={setEditorVal} message={consoleMessage} id={EXPERIMENT_ID}/>
         <div className="engine-container" style={{backgroundColor:"white"}}>
         <ColorPuzzleEngine code={editorVal} running={running} setRunning={setRunning} env={env} cellSize={32} w={10} h={10} 
-                speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} score={score} maxScore={maxScore}/>
+                speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} score={score} maxScore={maxScore} id={EXPERIMENT_ID}/>
           </div>
           </div>
           <Controls val={editorVal} setCode={setCode} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializePuzzle}/>

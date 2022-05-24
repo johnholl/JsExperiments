@@ -1,9 +1,9 @@
 export function processCode(code) {
-    let internalCode = code.replaceAll(/rod\[([0-9])+\]\s*\=/g, "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} ; draw(); await sleepA(speed); rod[$1]=")
+    let internalCode = code.replaceAll(/rod\[([0-9])+\]\s*\=/g, "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} ; animate(); await sleepA(speed); rod[$1]=")
     .replaceAll("rod", "rRef.current")
-    .replaceAll("rod = ", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} ; draw(); await sleepA(speed) ; rod = ")
+    .replaceAll("rod = ", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} ; animate(); await sleepA(speed) ; rod = ")
     .replaceAll(/console\.log\(([^)]+)\)/g, "x=x + $1 + \"\\n\"; setConsoleMessage\(x\);");
-    internalCode = "try{" + internalCode + "draw();} catch(error){setConsoleMessage((msg) =>msg + error.message)}";
+    internalCode = "try{" + internalCode + "animate();} catch(error){setConsoleMessage((msg) =>msg + error.message)}";
     internalCode = "(async () =>{ var x = \"\";" + internalCode + "})().then(()=>{});";
     return internalCode;
 }

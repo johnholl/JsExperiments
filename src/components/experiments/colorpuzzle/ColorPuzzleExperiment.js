@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import {useDispatch} from 'react-redux';
 import ColorPuzzleEngine from './ColorPuzzleEngine';
 import { getScore, newPuzzle } from './utils';
 import Controls from '../../controls/Controls';
 
 import "../styles.css";
 import EditorConsole from '../../editor/EditorConsole';
+import {setRun} from '../../reducers/runReducers';
+
 
 window.shouldStopCode = false;
+const EXPERIMENT_ID = "colorpuzzle";
 
 export default function ColorPuzzleExperiment(props) {
-    const [editorVal, setEditorVal] = useState('');
-    const [code, setCode] = useState('');
-    const [running, setRunning] = useState(false);
-    const [speed, setSpeed] = useState(1);
+    const dispatch = useDispatch();
     const [consoleMessage, setConsoleMessage] = useState("");
 
     const [env, setEnv] = useState(null)
@@ -22,6 +23,10 @@ export default function ColorPuzzleExperiment(props) {
 
     useEffect(()=>{
       initializePuzzle();
+      return () => {
+        window.shouldStopCode = true;
+        setTimeout(() => {window.shouldStopCode = false; dispatch(setRun({id: EXPERIMENT_ID, value: false}))}, 1300);
+      }
     }, [])
 
     const initializePuzzle = () => {
@@ -46,13 +51,13 @@ export default function ColorPuzzleExperiment(props) {
 
         <div className="interface">
       <div className="flex-container">
-        <EditorConsole setVal={setEditorVal} message={consoleMessage}/>
+        <EditorConsole message={consoleMessage} id={EXPERIMENT_ID}/>
         <div className="engine-container" style={{backgroundColor:"white"}}>
-        <ColorPuzzleEngine code={editorVal} running={running} setRunning={setRunning} env={env} cellSize={32} w={10} h={10} 
-                speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} score={score} maxScore={maxScore}/>
+        <ColorPuzzleEngine env={env} cellSize={32} w={10} h={10} 
+          setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} score={score} maxScore={maxScore} id={EXPERIMENT_ID}/>
           </div>
           </div>
-          <Controls val={editorVal} setCode={setCode} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializePuzzle}/>
+          <Controls initialize={initializePuzzle} id={EXPERIMENT_ID}/>
         </div>
         </div>
       </div>

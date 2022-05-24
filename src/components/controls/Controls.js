@@ -1,29 +1,34 @@
 import React, {useState} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import { Slider } from 'antd';
+import { setRun } from '../reducers/runReducers'
+import { setSpeed } from '../reducers/speedReducers';
 import "./styles.css";
 
 export default function Controls(props) {
-    const setRunning = props.setRunning;
-    const running = props.running;
+    const running = useSelector((state) => state.run.value[props.id]);
+    const speed = useSelector((state) => state.speed.value[props.id] || 1);
+    const dispatch = useDispatch();
+
     const [buffering, setBuffering] = useState(false);
 
     const runCode = () => {
-        setRunning(true);
+        dispatch(setRun({id: props.id, value: true}));
       }
 
       const stopCode = () => {
         window.shouldStopCode = true;
         setBuffering(true);
-        setTimeout(() => {window.shouldStopCode = false; setRunning(false); setBuffering(false);}, 1300);
+        setTimeout(() => {window.shouldStopCode = false; dispatch(setRun({id: props.id, value: false})); setBuffering(false);}, 1300);
       };
 
     const startDemo = () => {
-        setRunning("demo");
+        dispatch(setRun({id: props.id, value: "demo"}));
     }
 
     const resetGraph = () => {
         props.initialize();
-        setRunning(false);
+        dispatch(setRun({id: props.id, value: false}));
     }
 
     return(
@@ -40,8 +45,8 @@ export default function Controls(props) {
                 disabled={running}
                 min={1}
                 max={20}
-                onChange={props.changeSpeed}
-                value={typeof props.speed === 'number' ? props.speed : 0}/>
+                onChange={v => dispatch(setSpeed({id: props.id, value: v}))}
+                value={speed}/>
             </div>
         </div>
     )

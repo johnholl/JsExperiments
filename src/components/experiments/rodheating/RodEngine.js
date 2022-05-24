@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
+import {useSelector} from 'react-redux';
 import { processCode } from './utils';
 
 async function sleepA(ms) {
@@ -9,14 +10,14 @@ const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 
 export default function RodEngine(props) {
 
-        const code = props.code;
-        const running = props.running;
+        const code = useSelector((state) => state.code.value[props.id])
+        const running = useSelector((state) => state.run.value[props.id])
+        const speed = useSelector((state) => 1000/(state.speed.value[props.id] || 1));
         const canvasRef = useRef(null);
         const cs = props.cellSize;
         const cells = props.cells;
         const eqRod = props.eqRod;
         const rRef = useRef([...props.rod]);
-        const speed = props.speed;
         const setConsoleMessage = props.setConsoleMessage; 
         const starttime = useRef(null);
 
@@ -25,7 +26,7 @@ export default function RodEngine(props) {
             if(demoCode){
                 eval(processCode(demoCode));
             } else{
-                eval(processCode(code));
+                eval(processCode(code || ""));
             }
         }
 
@@ -86,6 +87,6 @@ export default function RodEngine(props) {
         }
 
     return(
-            <canvas {...props} ref={canvasRef}/>
+            <canvas ref={canvasRef}/>
     )
 }

@@ -33,7 +33,7 @@ export default function ListEngine(props) {
           useEffect(() => {
               if(!running){
                   lref.current = props.list;
-                  animate();
+                  draw();
               } else if(running == "demo"){
                 runCode(`for(var i=0; i<arr.length; i++){
                     var min = arr[i];
@@ -53,7 +53,7 @@ export default function ListEngine(props) {
 
           useEffect(() => {
             lref.current = props.list;
-            animate();
+            draw();
           }, [props.list])
 
 
@@ -72,27 +72,66 @@ export default function ListEngine(props) {
         }
 
         const swap = async (i, j) => {
-            animate(i, j);
-            await sleepA(speed);
-            animate()
             let newList = [...lref.current];
             var x = newList[i];
             newList[i] = newList[j];
             newList[j] = x;
-            lref.current = newList;
+            const animPromise = new Promise(function(resolve,reject){
+                const drawSwap = (fl, i, j, time) => {
+                    if(window.shouldStopCode){
+                        throw new Error('CODE STOPPED')
+                    }
+                    const canvas = canvasRef.current;
+                    const ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                    for(let k=0; k<lref.current.length; k++){
+                        if(k !== i && k !== j){
+                            if(sortedList[k] == lref.current[k]){
+                                ctx.fillStyle = colors[Math.floor((k*7)/20) % 7]
+                            } else{
+                                ctx.fillStyle = 'black';
+                            }
+                            ctx.fillRect(cs*k, canvas.height, cs/2, -5*lref.current[k])
+                        }
+                    }
+                    var left = cs*i;
+                    var right = cs*j;
+                    var diff = right - left;
+                    left = Math.floor(cs*i + (diff*(time - starttime.current)/speed));
+                    right = Math.floor(cs*j - (diff*(time - starttime.current)/speed));
+                    ctx.fillStyle = 'darkgray';
+                    ctx.fillRect(left, canvas.height, cs/2, -5*lref.current[i])
+                    ctx.fillRect(right, canvas.height, cs/2, -5*lref.current[j])
+                    if(time - starttime.current < speed){
+                        requestAnimationFrame((t) => {
+                            drawSwap(fl, i,j,t);
+                        })
+                    } else{resolve()};
+                }
+
+
+                requestAnimationFrame((time)=>{
+                    starttime.current = time;
+                    drawSwap(newList, i,j, time)
+                })
+            })
+
+            try{
+                await animPromise;
+                lref.current = newList;
+                requestAnimationFrame((t)=>draw());
+            } catch(error){console.log(error)};
+
         }
 
-        const animate = (p1=-1, p2=-1) => {
+        const draw = () => {
             const canvas = canvasRef.current
             const ctx = canvas.getContext('2d')
             canvas.width = cs*cells;
             canvas.height = 1000;
             ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
             for(let i=0; i<lref.current.length; i++){
-                if(i == p1 || i == p2){
-                    ctx.fillStyle = 'gray';
-                }
-                else if(sortedList[i] == lref.current[i]){
+                if(sortedList[i] == lref.current[i]){
                     ctx.fillStyle = colors[Math.floor((i*7)/20) % 7]
                 } else{
                     ctx.fillStyle = 'black';

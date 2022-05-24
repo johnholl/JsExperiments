@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import {useDispatch} from 'react-redux';
 import ListEngine from './ListEngine';
 import { newList } from './utils';
 import EditorConsole from '../../editor/EditorConsole';
 import Controls from '../../controls/Controls';
+import {setRun} from '../../reducers/runReducers';
+
 import '../styles.css'
 
 window.shouldStopCode = false;
+const EXPERIMENT_ID = "sort"
 
 export default function ListExperiment(props) {
-    const [editorVal, setEditorVal] = useState('');
-    // temporary holder for code as it's being written
-    const [code, setCode] = useState('');
-    // boolean whether experiment has been ran. Reset sets back to false
-    const [running, setRunning] = useState(false);
-    const [speed, setSpeed] = useState(1);
+    const dispatch = useDispatch();
     const [consoleMessage, setConsoleMessage] = useState("");
 
     // list state
@@ -22,6 +21,10 @@ export default function ListExperiment(props) {
 
     useEffect(() => {
       initializeList();
+      return () => {
+        window.shouldStopCode = true;
+        setTimeout(() => {window.shouldStopCode = false; dispatch(setRun({id: EXPERIMENT_ID, value: false}))}, 1300);
+      }
     }, [])
 
     const initializeList = () => {
@@ -44,14 +47,14 @@ export default function ListExperiment(props) {
         
     <div className="interface">
       <div className="flex-container">
-        <EditorConsole setVal={setEditorVal} message={consoleMessage}/>
+        <EditorConsole message={consoleMessage} id={EXPERIMENT_ID}/>
         <div className="engine-container">
-        <ListEngine code={editorVal} running={running} setRunning={setRunning} cellSize={14} cells={20}
-                speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}
-                list={list} setList={setList} sortedList={sortedList}/>
+        <ListEngine cellSize={14} cells={20}
+                setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}
+                list={list} setList={setList} sortedList={sortedList} id={EXPERIMENT_ID}/>
         </div>
       </div>
-      <Controls val={editorVal} setCode={setCode} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializeList}/>
+      <Controls initialize={initializeList} id={EXPERIMENT_ID}/>
     </div>
     </div>
     </div>

@@ -1,12 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react';
-import { processCode } from './utils';
-import {forceCoulomb, forceHooke, distance} from './utils';
+import { useSelector } from 'react-redux'
+import { processCode, forceCoulomb, forceHooke, distance} from './utils';
 
 const sample = `for(var i=0; i<1000; i++){
     if (window.shouldStopCode) { throw new Error('CODE STOPPED')}
     updateLocation();
     if(i%1==0){
-        await sleepA(10);
+        await sleepA(speed);
         animate();
         }
     }
@@ -20,15 +20,14 @@ const eps = 1;
 const scale = 40;
 
 export default function GraphEngine(props) {
-
-        const code = props.code;
-        const running = props.running;
+        const code = useSelector((state) => state.code.value[props.id])
+        const speed = useSelector((state) => 100/(state.speed.value[props.id] || 1));
+        const running = useSelector((state) => state.run.value[props.id])
         const canvasRef = useRef(null);
         const graph = props.graph;
         const [nodes, setNodes] = useState(props.nodes);
         const locations = useRef([...props.locations]);
         const velocities = useRef(Array(nodes.length).fill([0,0]));
-        const speed = props.speed;
         const setConsoleMessage = props.setConsoleMessage; 
 
         const runCode = (demoCode) => {
@@ -37,7 +36,7 @@ export default function GraphEngine(props) {
                 eval(processCode(demoCode));
             }
             else {
-                eval(processCode(code));
+                eval(processCode(code || ""));
             }
         }
 
@@ -81,7 +80,7 @@ export default function GraphEngine(props) {
 
 
         const animate = async () => {
-                await sleepA(speed/10);
+                await sleepA(speed);
                 const canvas = canvasRef.current
                 const ctx = canvas.getContext('2d')
                 canvas.width = 500;

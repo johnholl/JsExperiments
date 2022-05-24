@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import {useDispatch} from 'react-redux';
 import GraphEngine from './GraphEngine';
 import { newGraph } from './utils';
 import Controls from '../../controls/Controls';
-
 import "../styles.css";
 import EditorConsole from '../../editor/EditorConsole';
+import {setRun} from '../../reducers/runReducers';
 
 window.shouldStopCode = false;
+const EXPERIMENT_ID = "graph"
 
 export default function GraphExperiment(props) {
-    const [editorVal, setEditorVal] = useState('');
-    // temporary holder for code as it's being written
-    const [code, setCode] = useState('');
-    // boolean whether experiment has been ran. Reset sets back to false
-    const [running, setRunning] = useState(false);
-    // whether experiment succeeded
-    const [speed, setSpeed] = useState(1);
     const [consoleMessage, setConsoleMessage] = useState("");
-
+    const dispatch = useDispatch();
+    
     // graph state
     const [graph, setGraph] = useState(null);
     const [nodes, setNodes] = useState(null);
@@ -25,6 +21,10 @@ export default function GraphExperiment(props) {
 
     useEffect(() => {
       initializeGraph();
+      return () => {
+        window.shouldStopCode = true;
+        setTimeout(() => {window.shouldStopCode = false; dispatch(setRun({id: EXPERIMENT_ID, value: false}))}, 1300);
+      }
     }, [])
 
     const initializeGraph = () => {
@@ -52,12 +52,12 @@ export default function GraphExperiment(props) {
         <p>Write a method that modifies location that makes the graph look nice :)</p>
     <div className="interface">
       <div className="flex-container">
-        <EditorConsole setVal={setEditorVal} message={consoleMessage}/>
+        <EditorConsole message={consoleMessage} id={EXPERIMENT_ID}/>
         <div className="engine-container">
-        <GraphEngine code={editorVal} running={running} speed={1000/speed} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} graph={graph} nodes={nodes} locations={locations}/>
+        <GraphEngine setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} graph={graph} nodes={nodes} locations={locations} id={EXPERIMENT_ID}/>
         </div>
       </div>
-      <Controls val={editorVal} setCode={setCode} running={running} setRunning={setRunning} speed={speed} changeSpeed={setSpeed} initialize={initializeGraph}/>
+      <Controls initialize={initializeGraph} id={EXPERIMENT_ID}/>
     </div>
     </div>
     <div style={{paddingTop:50}}/>

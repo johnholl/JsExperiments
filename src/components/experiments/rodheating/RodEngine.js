@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import { processCode } from './utils';
+import {update} from "../../reducers/consoleReducers";
 
 async function sleepA(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -9,7 +10,7 @@ async function sleepA(ms) {
 const colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 
 export default function RodEngine(props) {
-
+        const dispatch = useDispatch();
         const code = useSelector((state) => state.code.value[props.id])
         const running = useSelector((state) => state.run.value[props.id])
         const speed = useSelector((state) => 1000/(state.speed.value[props.id] || 1));
@@ -18,7 +19,7 @@ export default function RodEngine(props) {
         const cells = props.cells;
         const eqRod = props.eqRod;
         const rRef = useRef([...props.rod]);
-        const setConsoleMessage = props.setConsoleMessage; 
+        const setConsoleMessage = (x) => dispatch(update({id: props.id, text: x}))
         const starttime = useRef(null);
 
         const runCode = (demoCode) => {

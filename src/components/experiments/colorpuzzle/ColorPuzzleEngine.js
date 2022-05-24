@@ -1,12 +1,13 @@
 import React, {useEffect, useRef} from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Slider } from 'antd';
 import { processCode, getScore } from './utils';
+import {update} from '../../reducers/consoleReducers';
 
 async function sleepA(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
 export default function ColorPuzzleEngine(props) {
-
+        const dispatch = useDispatch();
         const code = useSelector((state) => state.code.value[props.id])
         const running = useSelector((state) => state.run.value[props.id])
         const speed = useSelector((state) => 1000/(state.speed.value[props.id] || 1));
@@ -18,7 +19,7 @@ export default function ColorPuzzleEngine(props) {
         const env = useRef(props.env.map(function(arr) { return arr.slice();}));
         const prob = useRef(0.1);
         const score = useRef(props.score);
-        const setConsoleMessage = props.setConsoleMessage; 
+        const setConsoleMessage = (x) => dispatch(update({id: props.id, text: x}))
 
         const runCode = (demoCode) => {
             setConsoleMessage("");

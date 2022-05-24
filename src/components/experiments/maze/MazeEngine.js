@@ -1,9 +1,10 @@
 import React, {useEffect, useState, useRef} from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import { processCode } from './utils';
+import {update} from '../../reducers/consoleReducers';
 
 export default function MazeEngine(props) {
-
+        const dispatch = useDispatch();
         const code = useSelector((state) => state.code.value[props.id])
         const running = useSelector((state) => state.run.value[props.id])
         const speed = useSelector((state) => 1000/(state.speed.value[props.id] || 1));
@@ -14,7 +15,7 @@ export default function MazeEngine(props) {
         const start = props.start;
         const end = props.end;
         const env = props.env;
-        const setConsoleMessage = props.setConsoleMessage; 
+        const setConsoleMessage = (x) => dispatch(update({id: props.id, text: x}))
 
         const [player, setPlayer] = useState({x: start[0], y: start[1], type: 'player', facing: 0});
         const p = useRef({x: start[0], y: start[1], type: 'player', facing: 0})

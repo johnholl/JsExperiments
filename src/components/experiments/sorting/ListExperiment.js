@@ -13,7 +13,6 @@ const EXPERIMENT_ID = "sort"
 
 export default function ListExperiment(props) {
     const dispatch = useDispatch();
-    const [consoleMessage, setConsoleMessage] = useState("");
 
     // list state
     const [list, setList] = useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
@@ -47,11 +46,9 @@ export default function ListExperiment(props) {
         
     <div className="interface">
       <div className="flex-container">
-        <EditorConsole message={consoleMessage} id={EXPERIMENT_ID}/>
+        <EditorConsole id={EXPERIMENT_ID}/>
         <div className="engine-container">
-        <ListEngine cellSize={14} cells={20}
-                setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}
-                list={list} setList={setList} sortedList={sortedList} id={EXPERIMENT_ID}/>
+        <ListEngine cellSize={14} cells={20} list={list} setList={setList} sortedList={sortedList} id={EXPERIMENT_ID}/>
         </div>
       </div>
       <Controls initialize={initializeList} id={EXPERIMENT_ID}/>

@@ -14,7 +14,6 @@ const EXPERIMENT_ID = "rodheat";
 
 export default function RodExperiment(props) {
     const dispatch = useDispatch();
-    const [consoleMessage, setConsoleMessage] = useState("");
 
     // list state
     const [rod, setRod] = useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
@@ -48,11 +47,9 @@ export default function RodExperiment(props) {
 
     <div className="interface">
       <div className="flex-container">
-        <EditorConsole message={consoleMessage} id={EXPERIMENT_ID}/>
+        <EditorConsole id={EXPERIMENT_ID}/>
         <div className="engine-container">
-        <RodEngine cellSize={30} cells={20}
-                setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage}
-                rod={rod} setRod={setRod} eqRod={eqRod} id={EXPERIMENT_ID}/>
+        <RodEngine cellSize={30} cells={20} rod={rod} setRod={setRod} eqRod={eqRod} id={EXPERIMENT_ID}/>
         </div>
       </div>
       <Controls initialize={initializeRod} id={EXPERIMENT_ID}/>

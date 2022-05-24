@@ -14,7 +14,6 @@ const EXPERIMENT_ID = "maze"
 
 export default function MazeExperiment(props) {
     const dispatch = useDispatch();
-    const [consoleMessage, setConsoleMessage] = useState("");
 
     // maze state
     const [env, setEnv] = useState(startingMaze)
@@ -53,10 +52,9 @@ export default function MazeExperiment(props) {
 
         <div className="interface">
       <div className="flex-container">
-        <EditorConsole message={consoleMessage} id={EXPERIMENT_ID}/>
+        <EditorConsole id={EXPERIMENT_ID}/>
         <div className="engine-container">
-        <MazeEngine env={env} cellSize={14} w={21} h={21} start={startingPos} end={endingPos}
-         setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} id={EXPERIMENT_ID}/>
+        <MazeEngine env={env} cellSize={14} w={21} h={21} start={startingPos} end={endingPos} id={EXPERIMENT_ID}/>
           </div>
           </div>
           <Controls initialize={initializeMaze} id={EXPERIMENT_ID}/>

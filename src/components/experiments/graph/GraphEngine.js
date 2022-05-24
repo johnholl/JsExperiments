@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import {update} from '../../reducers/consoleReducers';
 import { processCode, forceCoulomb, forceHooke, distance} from './utils';
 
 const sample = `for(var i=0; i<1000; i++){
@@ -20,6 +21,7 @@ const eps = 1;
 const scale = 40;
 
 export default function GraphEngine(props) {
+        const dispatch = useDispatch();
         const code = useSelector((state) => state.code.value[props.id])
         const speed = useSelector((state) => 100/(state.speed.value[props.id] || 1));
         const running = useSelector((state) => state.run.value[props.id])
@@ -28,7 +30,7 @@ export default function GraphEngine(props) {
         const [nodes, setNodes] = useState(props.nodes);
         const locations = useRef([...props.locations]);
         const velocities = useRef(Array(nodes.length).fill([0,0]));
-        const setConsoleMessage = props.setConsoleMessage; 
+        const setConsoleMessage = (x) => dispatch(update({id: props.id, text: x}))
 
         const runCode = (demoCode) => {
             setConsoleMessage("");

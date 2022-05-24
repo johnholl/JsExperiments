@@ -11,7 +11,6 @@ window.shouldStopCode = false;
 const EXPERIMENT_ID = "graph"
 
 export default function GraphExperiment(props) {
-    const [consoleMessage, setConsoleMessage] = useState("");
     const dispatch = useDispatch();
     
     // graph state
@@ -52,9 +51,9 @@ export default function GraphExperiment(props) {
         <p>Write a method that modifies location that makes the graph look nice :)</p>
     <div className="interface">
       <div className="flex-container">
-        <EditorConsole message={consoleMessage} id={EXPERIMENT_ID}/>
+        <EditorConsole id={EXPERIMENT_ID}/>
         <div className="engine-container">
-        <GraphEngine setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} graph={graph} nodes={nodes} locations={locations} id={EXPERIMENT_ID}/>
+        <GraphEngine graph={graph} nodes={nodes} locations={locations} id={EXPERIMENT_ID}/>
         </div>
       </div>
       <Controls initialize={initializeGraph} id={EXPERIMENT_ID}/>

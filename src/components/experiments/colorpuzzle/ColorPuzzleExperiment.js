@@ -14,7 +14,6 @@ const EXPERIMENT_ID = "colorpuzzle";
 
 export default function ColorPuzzleExperiment(props) {
     const dispatch = useDispatch();
-    const [consoleMessage, setConsoleMessage] = useState("");
 
     const [env, setEnv] = useState(null)
     const [score, setScore] = useState(null);
@@ -51,10 +50,10 @@ export default function ColorPuzzleExperiment(props) {
 
         <div className="interface">
       <div className="flex-container">
-        <EditorConsole message={consoleMessage} id={EXPERIMENT_ID}/>
+        <EditorConsole id={EXPERIMENT_ID}/>
         <div className="engine-container" style={{backgroundColor:"white"}}>
         <ColorPuzzleEngine env={env} cellSize={32} w={10} h={10} 
-          setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} score={score} maxScore={maxScore} id={EXPERIMENT_ID}/>
+          score={score} maxScore={maxScore} id={EXPERIMENT_ID}/>
           </div>
           </div>
           <Controls initialize={initializePuzzle} id={EXPERIMENT_ID}/>

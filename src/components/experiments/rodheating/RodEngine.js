@@ -87,6 +87,6 @@ export default function RodEngine(props) {
         }
 
     return(
-            <canvas {...props} ref={canvasRef}/>
+            <canvas ref={canvasRef}/>
     )
 }

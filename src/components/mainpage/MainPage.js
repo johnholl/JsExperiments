@@ -3,6 +3,7 @@ import PageListing from './PageListing';
 import './styles.css';
 
 export default function MainPage() {
+
     return (
         <div style={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
             <div className="listing-container">

@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import {useDispatch} from 'react-redux';
 import GraphEngine from './GraphEngine';
 import { newGraph } from './utils';
 import Controls from '../../controls/Controls';
 import "../styles.css";
 import EditorConsole from '../../editor/EditorConsole';
+import {setRun} from '../../reducers/runReducers';
 
 window.shouldStopCode = false;
 const EXPERIMENT_ID = "graph"
 
 export default function GraphExperiment(props) {
     const [consoleMessage, setConsoleMessage] = useState("");
-
+    const dispatch = useDispatch();
+    
     // graph state
     const [graph, setGraph] = useState(null);
     const [nodes, setNodes] = useState(null);
@@ -18,6 +21,10 @@ export default function GraphExperiment(props) {
 
     useEffect(() => {
       initializeGraph();
+      return () => {
+        window.shouldStopCode = true;
+        setTimeout(() => {window.shouldStopCode = false; dispatch(setRun({id: EXPERIMENT_ID, value: false}))}, 1300);
+      }
     }, [])
 
     const initializeGraph = () => {

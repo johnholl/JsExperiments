@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import {useDispatch} from 'react-redux';
 import MazeEngine from './MazeEngine';
 import { newMaze, startingMaze } from './utils';
 import Controls from '../../controls/Controls';
 
 import "../styles.css";
 import EditorConsole from '../../editor/EditorConsole';
+import {setRun} from '../../reducers/runReducers';
+
 
 window.shouldStopCode = false;
 const EXPERIMENT_ID = "maze"
 
 export default function MazeExperiment(props) {
-    const [editorVal, setEditorVal] = useState('');
-    // temporary holder for code as it's being written
-    const [code, setCode] = useState('');
-    // boolean whether experiment has been ran. Reset sets back to false
-    const [running, setRunning] = useState(false);
-    // whether experiment succeeded
-    const [success, setSuccess] = useState(false);
+    const dispatch = useDispatch();
     const [consoleMessage, setConsoleMessage] = useState("");
 
     // maze state
@@ -26,6 +23,10 @@ export default function MazeExperiment(props) {
 
     useEffect(()=>{
       initializeMaze();
+      return () => {
+        window.shouldStopCode = true;
+        setTimeout(() => {window.shouldStopCode = false; dispatch(setRun({id: EXPERIMENT_ID, value: false}))}, 1300);
+      }
     }, [])
 
     const initializeMaze = () => {
@@ -52,10 +53,10 @@ export default function MazeExperiment(props) {
 
         <div className="interface">
       <div className="flex-container">
-        <EditorConsole setVal={setEditorVal} message={consoleMessage} id={EXPERIMENT_ID}/>
+        <EditorConsole message={consoleMessage} id={EXPERIMENT_ID}/>
         <div className="engine-container">
-        <MazeEngine code={editorVal} running={running} setRunning={setRunning} env={env} cellSize={14} w={21} h={21} 
-                start={startingPos} end={endingPos} setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} id={EXPERIMENT_ID}/>
+        <MazeEngine env={env} cellSize={14} w={21} h={21} start={startingPos} end={endingPos}
+         setConsoleMessage={setConsoleMessage} consoleMessage={consoleMessage} id={EXPERIMENT_ID}/>
           </div>
           </div>
           <Controls initialize={initializeMaze} id={EXPERIMENT_ID}/>

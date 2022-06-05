@@ -9,6 +9,7 @@ import GraphExperiment from './components/experiments/graph/GraphExperiment';
 import ColorPuzzleExperiment from './components/experiments/colorpuzzle/ColorPuzzleExperiment';
 import RodExperiment from './components/experiments/rodheating/RodExperiment';
 import ThreePage from './components/experiments/three/ThreePage';
+import NimExperiment from './components/experiments/nim/NimExperiment';
 import store from './store';
 import { Provider } from 'react-redux';
 
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="colorpuzzle" element={<ColorPuzzleExperiment/>}/>
         <Route path="heatrod" element={<RodExperiment/>}/>
         <Route path="three" element={<ThreePage/>}/>
+        <Route path="nim" element={<NimExperiment/>}/>
       </Routes>
       </BrowserRouter>
       </Provider>

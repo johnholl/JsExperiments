@@ -11,10 +11,10 @@ export const consoleSlice = createSlice({
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.value[action.payload.id] = action.payload.text;
+      state.value[action.payload.id] += action.payload.text;
     },
-    reset: (state) => {
-      state.value = "";
+    reset: (state, action) => {
+      state.value[action.payload.id] = "";
     },
   },
 })

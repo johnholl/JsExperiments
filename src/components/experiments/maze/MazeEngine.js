@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { processCode } from './utils';
-import {update} from '../../reducers/consoleReducers';
+import {update, reset} from '../../reducers/consoleReducers';
 
 export default function MazeEngine(props) {
         const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export default function MazeEngine(props) {
         const p = useRef({x: start[0], y: start[1], type: 'player', facing: 0})
 
         const runCode = (demoCode) => {
-            setConsoleMessage("");
+            dispatch(reset({id:props.id}));
             if(demoCode){
                 eval(processCode(demoCode))
             } else{

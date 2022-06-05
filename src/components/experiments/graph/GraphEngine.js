@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import {update} from '../../reducers/consoleReducers';
+import {update, reset} from '../../reducers/consoleReducers';
 import { processCode, forceCoulomb, forceHooke, distance} from './utils';
 
 const sample = `for(var i=0; i<1000; i++){
@@ -33,7 +33,7 @@ export default function GraphEngine(props) {
         const setConsoleMessage = (x) => dispatch(update({id: props.id, text: x}))
 
         const runCode = (demoCode) => {
-            setConsoleMessage("");
+            dispatch(reset({id:props.id}));
             if(demoCode){
                 eval(processCode(demoCode));
             }

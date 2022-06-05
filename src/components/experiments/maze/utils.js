@@ -4,7 +4,7 @@ export function processCode(code) {
     .replaceAll("turnLeft()", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} await turnLeft()")
     .replaceAll("turnRight()", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} await turnRight()")
     .replaceAll(/console\.log\(([^)]+)\)/g, "x=x + $1 + \"\\n\"; setConsoleMessage\(x\);")
-    internalCode = "try{" + internalCode + "} catch(error){setConsoleMessage((msg) =>msg + error.message)}";
+    internalCode = "try{" + internalCode + "} catch(error){setConsoleMessage(error.message)}";
     internalCode = "(async () =>{ var x = \"\";" + internalCode + "})().then(()=>{});";
     return internalCode;
 }

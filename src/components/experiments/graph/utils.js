@@ -2,7 +2,7 @@ export function processCode(code) {
     let internalCode = code.replaceAll("animate", "if (window.shouldStopCode) { throw new Error('CODE STOPPED')} await animate")
     .replaceAll("locations", "locations.current")
     .replaceAll(/console\.log\(([^)]+)\)/g, "x=x + $1 + \"\\n\"; setConsoleMessage\(x\);");
-    internalCode = "try{" + internalCode + "} catch(error){setConsoleMessage((msg) =>msg + error.message)}";
+    internalCode = "try{" + internalCode + "} catch(error){setConsoleMessage(error.message)}";
     internalCode = "(async () =>{ var x = \"\";" + internalCode + "})().then(()=>{});";
     return internalCode;
 }

@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Slider } from 'antd';
 import { processCode, getScore } from './utils';
-import {update} from '../../reducers/consoleReducers';
+import {update, reset} from '../../reducers/consoleReducers';
 
 async function sleepA(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
@@ -22,7 +22,7 @@ export default function ColorPuzzleEngine(props) {
         const setConsoleMessage = (x) => dispatch(update({id: props.id, text: x}))
 
         const runCode = (demoCode) => {
-            setConsoleMessage("");
+            dispatch(reset({id:props.id}));
             if(demoCode){
                 eval(processCode(demoCode))
             } else{

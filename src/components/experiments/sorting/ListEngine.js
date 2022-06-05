@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { processCode } from './utils';
-import { update } from '../../reducers/consoleReducers';
+import { update, reset } from '../../reducers/consoleReducers';
 
 async function sleepA(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -23,7 +23,7 @@ export default function ListEngine(props) {
         const starttime = useRef(null);
 
         const runCode = (demoCode) => {
-            setConsoleMessage("");
+            dispatch(reset({id:props.id}));
             if(demoCode){
                 eval(processCode(demoCode));
             } else{

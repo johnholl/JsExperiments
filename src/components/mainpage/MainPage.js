@@ -17,6 +17,7 @@ export default function MainPage() {
                     <PageListing title="match tiles" location="/colorpuzzle" img="colorpuzzle_static.png" anim="colorpuzzle.gif"/>
                     <PageListing title="simulate heat" location="/heatrod" img="rod.png" anim="rod.gif"/>
                     <PageListing title="play nim" location="/nim" img="nim.png" anim="nim.gif"/>
+                    <PageListing title="hanoi" location="/hanoi" img="hanoi.png" anim="hanoi.gif"/>
                 </div>
             </div>
         </div>
